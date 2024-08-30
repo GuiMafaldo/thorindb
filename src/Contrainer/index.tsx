@@ -10,7 +10,7 @@ const ContainerGeral = () =>{
             <InitialPage/>
             <ContainerPageCentral>
             <NewsAndAtualizações />
-                <SideBarItens />
+            <SideBarItens />
             </ContainerPageCentral>
         </>
     )

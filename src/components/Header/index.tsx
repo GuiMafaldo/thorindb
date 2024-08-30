@@ -1,32 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { HeaderPage, DivListItens, DivHeader, ButtonLogon } from "./styles";
-// import { IUser } from '../../api/api';
-// interface Props {
-//     name?: IUser
-// }
+import { useDataHora } from "../../services/dataHora";
 
-const InitialPage = () => {
-    const [dataHora, setDataHora] = useState(new Date());
-    // const [username, setUsername] = useState(name?.username)
-
+const InitialPage: React.FC = () => {
+    const dataHora = useDataHora()
+    const getUserName = localStorage.getItem('userName');
     
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setDataHora(new Date());
-        }, 1000);
-
-        return () => clearInterval(intervalId);
-    }, []);
-
-    const dia = dataHora.getDate();
-    const mes = dataHora.getMonth() + 1;
-    const ano = dataHora.getFullYear();
-    const hora = dataHora.getHours();
-    const minutos = dataHora.getMinutes();
-    const segundos = dataHora.getSeconds();
-    const dataHoraFormatada = `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
-
     return (
         <HeaderPage>
             <DivHeader>
@@ -37,8 +16,10 @@ const InitialPage = () => {
                 <nav>
                     <ul>
                         <li>Central</li>
-                        <li></li>
-                        <li>{dataHoraFormatada}</li>
+                        {getUserName ? (
+                            <li>{getUserName}</li>
+                        ): <li>Usuário não autenticado</li>}
+                        <li>{dataHora}</li>
                         <ButtonLogon href="/">Sair</ButtonLogon>
                     </ul>
                 </nav>

@@ -20,6 +20,10 @@ export const FormList = styled.div`
     border-radius: 8px;
     box-shadow: 4px 3px 3px 4px;
 
+    label {
+        font-family: Helvetica;
+    }
+
 
     form {
         display: flex;
@@ -27,13 +31,95 @@ export const FormList = styled.div`
         max-width: 400px;
         width: 100%;
 
-
-
         input {
             width: 400px;
             padding: 8px;
             border-radius: 8px;
             margin-bottom: 6px;
+        }
+
+        & .client-state {
+            display: flex;
+            margin-bottom: 20px;
+
+            label{
+                margin-left: 10px;
+            }
+
+            > div {
+                
+                 & .state{
+                    width: 150px;
+                 }
+
+                 & .city{
+                    margin-left: 10px;
+                    width: 200px;
+                 }
+            }
+        }
+
+
+        & .client-home {
+            display: flex;
+            margin-bottom: 20px;
+            
+
+            & .label-num{
+                & .num{
+                    width: 50px;
+                }   
+            }
+
+            & .label-city{
+                & .rua{
+                    width: 200px;
+                }   
+            }
+            
+
+            & .label-city, & .label-num {
+                display: flex;
+                flex-direction: column;
+                margin-right: 10px;
+
+            }
+
+            & .num-class-home{
+                width: 50px;
+            }
+            
+            
+            input {
+                width: 100px;
+            }
+            
+            
+        }
+
+        & .client-bairro {
+            label{
+                margin-left: 10px;
+            }
+            display: flex;
+            > div {
+                & .bairro{
+                    width: 200px;
+                }
+
+                & .cep{
+                    margin-left: 10px;
+                    width: 200px;
+                }
+            }
+        }
+
+        button{
+            align-self: center;
+            padding: 10px;
+            width: 100px;
+            cursor: pointer;
+            margin-top: 16px;
         }
     }
 
@@ -50,6 +136,7 @@ export const FormList = styled.div`
         align-items: center;
         justify-content: space-between;
         margin-left: 160px;
+        font-family: Helvetica;
 
         > h3 {
             margin-left: 80px;

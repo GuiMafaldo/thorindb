@@ -1,28 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { DivContainer, DivForm, FormLogin, HeaderLogin, SelectIdioma } from "./styles";
-
-import api from "../api/api";
-
-
+import { login } from "../api/api";
+import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
 
 const LoginPage: React.FC = () => {
-    const [username, setUsername] = useState("");
+    const [userData, setUserData] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
-    
-    const LoginPage = async(e: React.FormEvent) => {
-        e.preventDefault()
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
         try {
-            const userData = await api(username, password)
-            navigate('./initialpage')
+            const response = await login({ nome: userData, senha: password });
+
+            if (response && response.success) {
+                localStorage.setItem('userName', userData); // Armazena o nome do usuário
+                navigate('/initialpage');
+            } else {
+                setError("Credenciais inválidas.");
+            }
+        } catch (error) {
+            setError("Erro ao autenticar. Tente novamente.");
+        } finally {
+            setLoading(false);
         }
-        catch(error: any){
-            setError('Veriique suas credenciais')
-            console.error('Login nao permitido Credenciais invalidas', error)
-        }
-    }
+    };
 
     return (
         <>
@@ -32,29 +39,33 @@ const LoginPage: React.FC = () => {
             <DivContainer>
                 <h2>Login</h2>
                 <DivForm>
-                    <FormLogin onSubmit={LoginPage}>
+                    <FormLogin onSubmit={handleSubmit}>
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         <input 
                             type="text"
-                            placeholder="Usuario" 
-                            value={username}
-                            onChange={(event) => setUsername(event.target.value)} // Atualizando o estado 'username' com o valor digitado
-                            required />
+                            placeholder="Usuário" 
+                            value={userData}
+                            onChange={(e) =>  setUserData(e.target.value)}
+                            required 
+                        />
                         <input 
                             type="password" 
                             placeholder="Senha" 
                             value={password}
-                            onChange={(event) => setPassword(event.target.value)}
-                            required />
-                        <button className="button" type="submit">Entrar</button>
+                            onChange={(e) =>  setPassword(e.target.value)}
+                            required 
+                        />
+                        <button className="button" type="submit" disabled={loading}>
+                            {loading ? 'Entrando...' : 'Entrar'}
+                        </button>
                     </FormLogin>
-                    <p>Esqueceu sua senha? <span>Clique Aqui</span> </p>
+                    <p>Esqueceu sua senha? <span>Clique Aqui</span></p>
                 </DivForm>
                 <SelectIdioma>
                     <h4>Suport<span>?</span></h4>
                     <select>
                         <option value="pt-br">Português</option>
-                        <option value="english">Ingles</option>
+                        <option value="en">Inglês</option>
                     </select>
                     <img src="/image/iconeGlobo.png" alt="logo" />
                 </SelectIdioma>
@@ -64,7 +75,3 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
-function userContext(): { setUser: any; } {
-    throw new Error("Function not implemented.");
-}
-
