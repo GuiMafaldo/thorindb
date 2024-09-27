@@ -1,7 +1,5 @@
-import React from "react";
 import { DivGeral, SubMenuOpen } from "./styles";
 import {  useState } from 'react'
-import InitialPage from "../Header";
 import { Link } from "react-router-dom";
 
 function SideBarItens () {
@@ -11,10 +9,10 @@ function SideBarItens () {
     const [vendas, setVendas] = useState(false)
     const areaDeTrabalho = {
         initialPage: "Pagina inicial",
-        cadastro: "Cadastro",
+        produto: "Produtos",
+        clientes: "Clientes",
         nf: "Nota fiscal",
         pedidoDeVenda: "Pedidos de venda",
-        estruturas: "Estruturas",
         estoque: "Estoque"
 
     }
@@ -25,30 +23,42 @@ function SideBarItens () {
             <h3>Central KepB</h3>
                 <ul>
                     <li>
-                        <a target="initialPage" href="Pagina inicial">{areaDeTrabalho.initialPage}</a>
+                        <a href="/initialpage">{areaDeTrabalho.initialPage}</a>
                     </li>
                     <li>
                         <a href="#" onClick={() => setMenuCad(!menuCad)}>
-                            {areaDeTrabalho.cadastro}
+                            {areaDeTrabalho.produto}
                         </a>  
                         {menuCad ? (
                             <SubMenuOpen className="is-open">
                                 <ul>
                                     <li className="list-subMenu">
-                                        <Link className="subMenu" to="/colaboradores">Cadastrar Colaborador</Link>
+                                        <Link className="subMenu" to="/consultarProdutos">Buscar produtos</Link>
                                     </li>
                                     <li className="list-subMenu">
-                                        <Link className="subMenu" to="/client">Cadastrar Clientes</Link>
-                                    </li>
-                                    <li className="list-subMenu">
-                                        <Link className="subMenu" to="/fornecedores">Cadastrar Fornecedor</Link>
-                                    </li>
-                                    <li className="list-subMenu">
-                                        Cadastrar Produtos
+                                        <Link className="subMenu" to="/cadastrarProdutos">Cadastrar produtos</Link>
                                     </li>
                                 </ul>
                             </SubMenuOpen>
                         ) : ''}
+                        
+                    </li>
+                    <li>
+                        <a onClick={()=> setEstrut(!estrut)} href="#">
+                            {areaDeTrabalho.clientes}
+                        </a>
+                        {estrut ? (
+                            <SubMenuOpen>
+                            <ul>
+                                <li className="list-subMenu">
+                                    <Link className="subMenu" to="/buscarClientes">Buscar clientes</Link>
+                                </li>
+                                <li className="list-subMenu">
+                                    <Link className="subMenu" to="/cadastrarCliente">Cadastrar clientes</Link>
+                                </li>
+                            </ul>
+                        </SubMenuOpen>
+                        ): ''}
                         
                     </li>
                     <li>
@@ -98,27 +108,7 @@ function SideBarItens () {
                         ) : ''}
                         
                     </li>
-                    <li>
-                        <a onClick={()=> setEstrut(!estrut)} href="#">
-                            {areaDeTrabalho.estruturas}
-                        </a>
-                        {estrut ? (
-                            <SubMenuOpen>
-                            <ul>
-                                <li className="list-subMenu">
-                                    Montagem de Espelhos
-                                </li>
-                                <li className="list-subMenu">
-                                    Montagem de Barrica
-                                </li>
-                                <li className="list-subMenu">
-                                    Montagem de Reparos
-                                </li>
-                            </ul>
-                        </SubMenuOpen>
-                        ): ''}
-                        
-                    </li>
+                    
                 </ul>
             </nav>
         </DivGeral>

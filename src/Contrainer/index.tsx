@@ -1,6 +1,6 @@
-import SideBarItens from "../components/Aside";
-import NewsAndAtualizações from "../components/CentalPage";
+import SideBarItens from "../components/MenuSideLeft";
 import InitialPage from "../components/Header";
+import PainelAdmin from "../components/PainelAdmin";
 import { ContainerPageCentral } from "./styles";
 
 
@@ -9,8 +9,10 @@ const ContainerGeral = () =>{
         <>
             <InitialPage/>
             <ContainerPageCentral>
-            <NewsAndAtualizações />
-            <SideBarItens />
+                <div className="aside-and-content">
+                    <PainelAdmin />
+                    <SideBarItens />
+                </div>
             </ContainerPageCentral>
         </>
     )

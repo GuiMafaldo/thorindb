@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const HeaderPage = styled.header`
     background-color: #d9d9d9;
-    max-width: 1360px;
     width: 100%;
     margin: 0 auto;
     

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 export const ContainerPageCentral = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     margin: 0 auto;
-    max-width: 860px;
+    width: 100%;
+
+
+    & .aside-and-content {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 
 
 `

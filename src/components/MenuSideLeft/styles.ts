@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const DivGeral = styled.div`
     max-width: 1360px;
     width: 100%;
-    margin-left: -680px;
+   
 
     h3 {
         font-family: helvetica;
