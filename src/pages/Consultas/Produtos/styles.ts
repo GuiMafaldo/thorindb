@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerContent = styled.div`
     width: 100%;
+    height: 100vh;
     margin: 0;
     padding: 0;
     padding-bottom: 20px;
@@ -12,7 +13,7 @@ export const ContainerContent = styled.div`
             display: flex;
             margin-top: 20px;
             margin-left: 570px;
-            width: 40px;
+            width: 80px;
             text-decoration: none;
             color: #000;
             background-color: #000;

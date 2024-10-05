@@ -69,7 +69,7 @@ function SideBarItens () {
                             <SubMenuOpen className="is-open">
                             <ul>
                                 <li className="list-subMenu">
-                                    Nota de Entrada
+                                    <Link className="subMenu" to="/notaFiscal">Nota fiscal</Link>
                                 </li>
                                 <li className="list-subMenu">
                                     Nota de Saida

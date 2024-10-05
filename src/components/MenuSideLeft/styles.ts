@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const DivGeral = styled.div`
-    max-width: 1360px;
+    margin-left: -4px;
     width: 100%;
    
 
     h3 {
         font-family: helvetica;
         margin-left: 45px;
+        margin-bottom: 30px;
     }
 
     nav {
@@ -15,11 +16,11 @@ export const DivGeral = styled.div`
         max-width: 220px;
         height: 100vh;
         padding-top: 10px;
+        margin-left: 1px;
         
         ul{
             display: flex;
             flex-direction: column;
-            margin-left: -36px;
             
             li{
                 padding: 2px;

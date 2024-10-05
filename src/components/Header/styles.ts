@@ -4,13 +4,14 @@ export const HeaderPage = styled.header`
     background-color: #d9d9d9;
     width: 100%;
     margin: 0 auto;
+    padding-bottom: 10px;
     
 `
 
 export const DivHeader = styled.div`
     display: flex;
-    margin-top: 30px;
-    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 10px;
 
 
     img{

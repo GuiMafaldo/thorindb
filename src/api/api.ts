@@ -1,5 +1,7 @@
 import { Cliente } from "../utils/cliente";
+import { ItemNotaFiscal } from "../utils/notaFiscal";
 import { Produto } from "../utils/products";
+
 
 
 // LOGIN AUTENTICACAO NO BANCO DE DADOS
@@ -131,5 +133,32 @@ export const getProdutos = async (searchTerm: string): Promise<Produto[]> => {
         return [];
     }
 }
+
+export const emitirNotaFiscal = async (numero: string, cliente: string, endereco: string, itens: ItemNotaFiscal[]) => {
+    try {
+        const res = await fetch('http://localhost:5089/notafiscal/criar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                numero,
+                cliente,
+                endereco,
+                itens
+            }),
+        });
+
+        if (!res.ok) {
+            throw new Error('Erro ao emitir nota fiscal');
+        }
+
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error('Erro na API de busca de Notas Fiscais:', error);
+        return null; // Retorna null em caso de erro
+    }
+};
 
 

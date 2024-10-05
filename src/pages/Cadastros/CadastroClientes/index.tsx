@@ -30,90 +30,108 @@ const CadastroClientes = () => {
     <FormContainer>
       <Title>Cadastro de Cliente</Title>
       <Form onSubmit={handleSubmit}>
-        <Label>Nome:</Label>
-        <Input
-          type="text"
-          name="nome"
-          value={cliente.nome}
-          onChange={handleChange}
-          required
-        />
+        <div className='client-name'>
+            <Label className='name'>Nome:</Label>
+            <Input
+            type="text"
+            name="nome"
+            value={cliente.nome}
+            onChange={handleChange}
+            required
+            />
 
-        <Label>Sobrenome:</Label>
-        <Input
-          type="text"
-          name="sobrenome"
-          value={cliente.sobrenome}
-          onChange={handleChange}
-        />
+            <Label className='name-secondary'>Sobrenome:</Label>
+            <Input
+            type="text"
+            name="sobrenome"
+            value={cliente.sobrenome}
+            onChange={handleChange}
+            />
+        </div>
 
-        <Label>Telefone:</Label>
-        <Input
-          type="number"
-          name="telefone"
-          value={cliente.telefone}
-          onChange={handleChange}
-        />
+        <div className='email-and-tel'>
+            <Label className='tel'>Telefone:</Label>
+            <Input
+                className='tel-input'
+                type="number"
+                name="telefone"
+                value={cliente.telefone}
+                onChange={handleChange}
+            />
 
-        <Label>Email:</Label>
-        <Input
-          type="email"
-          name="email"
-          value={cliente.email}
-          onChange={handleChange}
-        />
+            <Label className='email'>Email:</Label>
+            <Input
+                className='email-input'
+                type="email"
+                name="email"
+                value={cliente.email}
+                onChange={handleChange}
+            />
+        </div>
 
-        <Label>Logradouro:</Label>
-        <Input
-          type="text"
-          name="logradouro"
-          value={cliente.logradouro}
-          onChange={handleChange}
-        />
+        <div className='rua-and-num'>
+            <Label className='logradouro'>Logradouro:</Label>
+            <Input
+                className='rua-input'
+                type="text"
+                name="logradouro"
+                value={cliente.logradouro}
+                onChange={handleChange}
+            />
 
-        <Label>Num:</Label>
-        <Input
-          type="number"
-          name="numero"
-          value={cliente.email}
-          onChange={handleChange}
-        />
+            <Label className='num'>Num:</Label>
+            <Input
+                className='num-input'
+                type="number"
+                name="numero"
+                value={cliente.email}
+                onChange={handleChange}
+            />
+        </div>
 
-        <Label>Bairro:</Label>
-        <Input
-          type="text"
-          name="bairro"
-          value={cliente.bairro}
-          onChange={handleChange}
-        />
 
-        <Label>Cidade:</Label>
-        <Input
-          type="text"
-          name="cidade"
-          value={cliente.cidade}
-          onChange={handleChange}
-        />
+        <div className='cidade-and-estado'>
+            <Label  className='city'>Cidade:</Label>
+            <Input
+                className='city-input'
+                type="text"
+                name="cidade"
+                value={cliente.cidade}
+                onChange={handleChange}
+            />
 
-        <Label>Estado:</Label>
-        <Input
-          type="text"
-          name="estado"
-          value={cliente.estado}
-          onChange={handleChange}
-        />
+            <Label className='state'>Estado:</Label>
+            <Input
+                className='state-input'
+                type="text"
+                name="estado"
+                value={cliente.estado}
+                onChange={handleChange}
+            />
+        </div>
 
-        <Label>Cep:</Label>
-        <Input
-          type="number"
-          name="cep"
-          value={cliente.cep}
-          onChange={handleChange}
-        />
+        <div className='bairro-and-cep'>
+            <Label className='bairro'>Bairro:</Label>
+            <Input
+                className='bairro-input'
+                type="text"
+                name="bairro"
+                value={cliente.bairro}
+                onChange={handleChange}
+            />
+            <Label className='cep'>Cep:</Label>
+            <Input
+                className='cep-input'
+                type="number"
+                name="cep"
+                value={cliente.cep}
+                onChange={handleChange}
+            />
+        </div>
 
         <ButtonGroup>
           <Button type="submit">Gravar Dados</Button>
-          {/* <Button type="button" onClick={() => setCliente({})}>Fechar</Button> */}
+          <a href='/initialpage'>Voltar </a>
         </ButtonGroup>
       </Form>
     </FormContainer>

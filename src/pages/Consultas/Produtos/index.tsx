@@ -3,7 +3,7 @@ import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWra
 import { getProdutos } from "../../../api/api";
 import { Produto } from "../../../utils/products";
 
-const ConsultarProdutos = () => {
+const SearchProdutos = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [filteredResults, setFilteredResults] = useState<Produto[]>([]);
@@ -48,10 +48,10 @@ const ConsultarProdutos = () => {
             <h1>Consultar produtos</h1>
             <div>
                 <input
-                type="text"
-                placeholder="Digite o nome do produto"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
+                  type="text"
+                  placeholder="Digite o nome do produto"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
                 />
                 <button onClick={fetchProdutos}>Buscar</button>
             </div>
@@ -99,4 +99,4 @@ const ConsultarProdutos = () => {
   );
 };
 
-export default ConsultarProdutos;
+export default SearchProdutos;

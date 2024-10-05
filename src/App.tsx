@@ -6,7 +6,9 @@ import CadastroDeClients from './pages/Cadastros/CadastroClientes';
 import CadFornecedores from './pages/Cadastros/CadastroFornecedores';
 import CadastrarProdutos from './pages/Cadastros/CadastroProdutos';
 import { GlobalStyle } from './styles';
-import ConsultarProdutos from './pages/Consultas/Produtos';
+import SearchProdutos from './pages/Consultas/Produtos';
+import SearchClientes from './pages/Consultas/Clientes';
+import EmissaoNotaFiscal from './pages/NotaFiscal';
 
 
 
@@ -29,7 +31,11 @@ const App = () => {
                     <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
                     
                     {/*CONSULTAS CLIENTES PRODUTOS*/}
-                    <Route path='/consultarProdutos' element={<ConsultarProdutos />} />
+                    <Route path='/consultarProdutos' element={<SearchProdutos />} />
+                    <Route path='/buscarClientes' element={<SearchClientes />} />
+
+                    {/*EMISSAO DE NOTA FISCAL*/}
+                    <Route path='/notaFiscal' element={<EmissaoNotaFiscal />} />
                     
                 </Routes>
             </Router>   
