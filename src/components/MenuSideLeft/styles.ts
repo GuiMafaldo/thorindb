@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const DivGeral = styled.div`
     margin-left: -4px;
     width: 100%;
+
+    > img {
+        width: 220px;
+    }
    
 
     h3 {

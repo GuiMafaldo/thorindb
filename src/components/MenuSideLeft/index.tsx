@@ -3,22 +3,24 @@ import {  useState } from 'react'
 import { Link } from "react-router-dom";
 
 function SideBarItens () {
-    const [menuCad, setMenuCad] = useState(false)
-    const [menuEstoque, setMenuEstoque] = useState(false)
-    const [estrut, setEstrut] = useState(false)
-    const [vendas, setVendas] = useState(false)
+    const [menuCad, setMenuCad] = useState<Boolean>(false)
+    const [menuEstoque, setMenuEstoque] = useState<Boolean>(false)
+    const [estrut, setEstrut] = useState<Boolean>(false)
+    const [vendas, setVendas] = useState<Boolean>(false)
+    const [fornecedor, setFornecedor] = useState<Boolean>(false)
     const areaDeTrabalho = {
         initialPage: "Pagina inicial",
         produto: "Produtos",
         clientes: "Clientes",
         nf: "Nota fiscal",
         pedidoDeVenda: "Pedidos de venda",
-        estoque: "Estoque"
+        estoque: "Estoque",
+        fornecedor: "Fornecedor"
 
     }
     return(
         <DivGeral id="Aside">
-            <img src="https://via.placeholder.com/220x220" alt="My photo" />
+            <img src="/image/logoKeppler.png" alt="My photo" />
             <nav>
             <h3>Central KepB</h3>
                 <ul>
@@ -72,7 +74,7 @@ function SideBarItens () {
                                     <Link className="subMenu" to="/notaFiscal">Nota fiscal</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    Nota de Saida
+                                    <Link className="subMenu" to="/notaEntrada">Nota de Entrada</Link>
                                 </li>
                                 <li className="list-subMenu">
                                     Nota de Devolução
@@ -82,6 +84,24 @@ function SideBarItens () {
                                 </li>
                             </ul>
                         </SubMenuOpen> 
+                        ): ''}
+                    </li>
+                    <li className="list-subMenu">
+                        <a onClick={() => setFornecedor(!fornecedor)} href="#">
+                            {areaDeTrabalho.fornecedor}
+                        </a>
+                        {fornecedor ? (
+                            <SubMenuOpen>
+                            <ul>
+                                <li className="list-subMenu">
+                                    <Link className="subMenu" to="/cadastrarFornecedor">Cadastrar Fornecedor</Link>
+                                </li>
+                                <li className="list-subMenu">
+                                    Pesquisar Fornecedores
+                                </li>
+                                
+                            </ul>
+                        </SubMenuOpen>
                         ): ''}
                     </li>
                     <li>

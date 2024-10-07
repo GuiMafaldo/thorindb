@@ -3,12 +3,13 @@ import LoginPage from './LoginComponent'
 import ContainerGeral from '../src/Contrainer';
 import CadColaboradores from './pages/Cadastros/CadastroColaboradores';
 import CadastroDeClients from './pages/Cadastros/CadastroClientes';
-import CadFornecedores from './pages/Cadastros/CadastroFornecedores';
 import CadastrarProdutos from './pages/Cadastros/CadastroProdutos';
 import { GlobalStyle } from './styles';
 import SearchProdutos from './pages/Consultas/Produtos';
 import SearchClientes from './pages/Consultas/Clientes';
-import EmissaoNotaFiscal from './pages/NotaFiscal';
+import EmissaoNotaFiscal from './pages/NotasFiscais/NotaSaida';
+import NotaFiscal from './pages/NotasFiscais/NotaEntrada';
+import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
 
 
 
@@ -26,16 +27,18 @@ const App = () => {
                     
                     {/*  CADASTROS PRODUTOS/ CLIENTES  E ETC.*/}
                     <Route path='/colaboradores' element={<CadColaboradores />} />
-                    <Route path='/fornecedores' element={<CadFornecedores/>} />
+                    <Route path='/cadastrarFornecedor' element={<CadastroFornecedores/>} />
                     <Route path='/cadastrarCliente' element={<CadastroDeClients />} />
                     <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
                     
-                    {/*CONSULTAS CLIENTES PRODUTOS*/}
+                    {/*CONSULTAS CLIENTES PRODUTOS E FORNECEDORES*/}
                     <Route path='/consultarProdutos' element={<SearchProdutos />} />
                     <Route path='/buscarClientes' element={<SearchClientes />} />
 
                     {/*EMISSAO DE NOTA FISCAL*/}
                     <Route path='/notaFiscal' element={<EmissaoNotaFiscal />} />
+                    <Route path='/notaEntrada' element={<NotaFiscal />} />
+                
                     
                 </Routes>
             </Router>   

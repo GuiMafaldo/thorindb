@@ -2,56 +2,111 @@ import styled from "styled-components";
 
 
 export const ContainerGrid = styled.div`
-    background-color: #737373;
-    width: 98vw;
+    width: 1640px;
     height: 100vh;
-    text-align: center;
-    margin-top: -32px;
     display: flex;
-    flex-direction: column;
-
-`
-
-export const GridLayout = styled.div`
-    width: 90vw;
-    height: 100vh;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: #e3e3e3;
-    text-align: left;
-}
 `
-
+export const ContentForm = styled.div`
+    width: 1440px;
+    margin: 0 auto;
+`
 export const FirtMenuCad = styled.div`
-    width: 40vw;
+    width: 100vw;
     height: 78vh;
-    background-color: #e9e9e9e9;
+    background-color: #fff;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    box-shadow: 4px 4px 4px 4px;
-    border-radius: 8px;
 
 
     h3 {
         font-size: 2em;
         font-family: Helvetica;
+        text-align: center;
+        margin-bottom: 40px;
+        margin-top: 40px;
     }
 
     form {
-        display: flex;
-        flex-direction: column;
-        max-width: 400px;
-        width: 100%;
-        margin-top: 100px;
+        display: block;
+        flew-direction: column;
+        width: 500px;
+
+        & .name-and-cnpj{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+
+        & .email-and-tel{
+            display: flex;
+            width: 100%;
+            gap: 120px;
+            margin: 0 auto;
+            justify-content: space-between;
+
+            & .id-empresa{
+                width: 120px;
+            }
+        }
+
+        & .city-and-rua{
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+
+        & .cep-and-number{
+            display: flex;
+            width: 100%;
+            gap: 20px;
+            margin: 0 auto;
+
+            & .number-forn{
+                width: 100px;
+                height: 35px;
+                margin-top: 18px;
+            }
+        }
+
+        & .description-and-button{
+            display: flex;
+            width: 1640px;
+            flex-direction: row;
+            justify-content: space-between;
+
+            img {
+                width: 200px;
+            }
+
+            & .button-cad{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-right: 100px;
+
+
+                & .voltar{
+                    background-color: #000;
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 7px;
+                    border-radius: 4px;
+                    margin-left: 10px;
+                }
+            }
+        }
 
 
         input{
-            width: 400px;
+            width: 440px;
             padding: 8px;
+            border: 1px solid #000;
             border-radius: 8px;
             margin-bottom: 6px;
         }
@@ -71,20 +126,7 @@ export const FirtMenuCad = styled.div`
             border-radius: 4px;
         }
     }
-
-    & .cep-and-number {
-        display: flex;
-        align-items: center;
-
-
-        & .number-forn {
-            margin: 0 auto;
-            margin-bottom: -11px;
-            margin-left: 10px;
-            width: 40px;
-            height: 14px;
-        }
-    }
+}
 
 
     button {
