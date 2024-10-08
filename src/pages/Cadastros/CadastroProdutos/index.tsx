@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 
+import { submitProdutos } from '../../../api/api';
+
 import { Button, Container, Form, FormGroup, Input, Label, Title } from './styles';
-import { cadastrarProdutos } from '../../../api/api';
 
 
 const CadastrarProduto = () => {
-      const [nomeProduto, setNomeProduto] = useState('');
-      const [id, setId] = useState('');
-      const [precoVenda, setPrecoVenda] = useState('');
-      const [unidade, setUnidade] = useState('');
       const [formato, setFormato] = useState('Simples ou com variação');
       const [tipo, setTipo] = useState('Produto');
       const [condicao, setCondicao] = useState('Não Especificado');
-      const [descricao, setDescricao] = useState('');
       const [categoria, setCategoria] = useState('Sem categoria');
 
       const [cadProduto, setCadProduto] = useState({
@@ -34,7 +30,7 @@ const CadastrarProduto = () => {
 
       const handleSubmit = async(e: any) => {
         e.preventDefault();
-       const resultado = await cadastrarProdutos(cadProduto);
+       const resultado = await submitProdutos(cadProduto);
        if (resultado) {
             alert("Produto cadastrado com sucesso!");
         } else {

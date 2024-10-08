@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
-import { getProdutos } from "../../../api/api";
+import { handleProdutos } from "../../../api/api";
 import { Produto } from "../../../utils/products";
 
 const SearchProdutos = () => {
@@ -15,7 +15,7 @@ const SearchProdutos = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await getProdutos(searchTerm); // Busca todos os produtos da API
+      const res = await handleProdutos(searchTerm); // Busca todos os produtos da API
       setProdutos(res); // Salva todos os produtos no estado
       setFilteredResults(res); // Inicialmente, todos os produtos são renderizados
     } catch (err) {

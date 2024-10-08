@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { HeaderPage, DivListItens, DivHeader, ButtonLogon } from "./styles";
 import { useDataHora } from "../../services/dataHora";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Produto } from "../utils/products";
-import { getProdutos } from "../api/api";
+import { handleProdutos } from "../api/api";
 
 export const useProductsArea = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -15,7 +15,7 @@ export const useProductsArea = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await getProdutos(searchTerm);
+      const res = await handleProdutos(searchTerm);
       setProducts(res);
       setFilteredProducts([]); // Inicialmente, a lista filtrada está vazia
       setShowResults(false); // Não exibe resultados até que a busca seja realizada

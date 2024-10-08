@@ -91,6 +91,7 @@ export const Input = styled.input`
   color: #333;
   margin-bottom: 10px;
   width: 100%;
+  height: 30px;
 `;
 
 export const Select = styled.select`

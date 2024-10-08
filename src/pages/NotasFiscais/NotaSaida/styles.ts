@@ -1,5 +1,31 @@
 import styled from "styled-components";
 
+export const ButtonBackMenu = styled.div`
+  display: flex;
+ 
+
+  > button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      margin-right: 10px;
+      width: 80px;
+      height: 30px;
+      padding: 6px;
+      background-color: #000;
+      border: none;
+      border-radius: 6px;
+      
+
+      & .backMenu{
+          color: #fff;
+          font-family: Helvetica;
+          text-decoration: none;
+      }
+  }
+`
+
 export const DanfeContainer = styled.div`
   max-width: 900px;
   height: 100vh;

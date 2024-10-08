@@ -25,12 +25,12 @@ function SideBarItens () {
             <h3>Central KepB</h3>
                 <ul>
                     <li>
-                        <a href="/initialpage">{areaDeTrabalho.initialPage}</a>
+                        <Link to="/initialpage">{areaDeTrabalho.initialPage}</Link>
                     </li>
                     <li>
-                        <a href="#" onClick={() => setMenuCad(!menuCad)}>
+                        <Link to="" onClick={() => setMenuCad(!menuCad)}>
                             {areaDeTrabalho.produto}
-                        </a>  
+                        </Link>  
                         {menuCad ? (
                             <SubMenuOpen className="is-open">
                                 <ul>
@@ -46,9 +46,9 @@ function SideBarItens () {
                         
                     </li>
                     <li>
-                        <a onClick={()=> setEstrut(!estrut)} href="#">
+                        <Link onClick={()=> setEstrut(!estrut)} to="#">
                             {areaDeTrabalho.clientes}
-                        </a>
+                        </Link>
                         {estrut ? (
                             <SubMenuOpen>
                             <ul>
@@ -64,32 +64,32 @@ function SideBarItens () {
                         
                     </li>
                     <li>
-                        <a onClick={() => setVendas(!vendas)} href="#">
+                        <Link onClick={() => setVendas(!vendas)} to="#">
                             {areaDeTrabalho.nf}
-                        </a>
+                        </Link>
                         {vendas ? (
                             <SubMenuOpen className="is-open">
                             <ul>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/notaFiscal">Nota fiscal</Link>
+                                    <Link className="subMenu" to="/notaFiscal">Gerar Nota Saida</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/notaEntrada">Nota de Entrada</Link>
+                                    <Link className="subMenu" to="/notaEntrada">Lançar Nota de Entrada</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    Nota de Devolução
+                                    Lançar Nota de Devolução
                                 </li>
                                 <li className="list-subMenu">
-                                    Nota de Garantia
+                                   Lançar Nota de Garantia
                                 </li>
                             </ul>
                         </SubMenuOpen> 
                         ): ''}
                     </li>
                     <li className="list-subMenu">
-                        <a onClick={() => setFornecedor(!fornecedor)} href="#">
+                        <Link onClick={() => setFornecedor(!fornecedor)} to="">
                             {areaDeTrabalho.fornecedor}
-                        </a>
+                        </Link>
                         {fornecedor ? (
                             <SubMenuOpen>
                             <ul>
@@ -97,7 +97,7 @@ function SideBarItens () {
                                     <Link className="subMenu" to="/cadastrarFornecedor">Cadastrar Fornecedor</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    Pesquisar Fornecedores
+                                    <Link className="subMenu" to="/buscarFornecedor">Pesquisar Fornecedor</Link>
                                 </li>
                                 
                             </ul>
@@ -105,9 +105,9 @@ function SideBarItens () {
                         ): ''}
                     </li>
                     <li>
-                        <a onClick={() => setMenuEstoque(!menuEstoque)} href="#">
+                        <Link onClick={() => setMenuEstoque(!menuEstoque)} to="">
                             {areaDeTrabalho.estoque}
-                        </a>
+                        </Link>
                         {menuEstoque ? (
                             <SubMenuOpen>
                             <ul>

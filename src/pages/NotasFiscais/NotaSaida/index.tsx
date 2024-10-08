@@ -11,8 +11,10 @@ import {
   FormField, 
   Label, 
   Input, 
-  Button 
+  Button, 
+  ButtonBackMenu
 } from "./styles";
+import { Link } from "react-router-dom";
 
 const EmissaoNotaFiscal = () => {
   // Estados para armazenar os dados manuais
@@ -44,119 +46,124 @@ const EmissaoNotaFiscal = () => {
   };
 
   return (
-    <DanfeContainer>
-      {/* Cabeçalho com informações estáticas da empresa */}
-      <Header>
-        <CompanyInfo>
-          <h3>TECNOSPEED & TECNOLOGIA</h3>
-          <p>RUA DO POVO, 123</p>
-          <p>CNPJ: 08.137.668/0001-60</p>
-          <p>UF: PR</p>
-        </CompanyInfo>
-        <NfeInfo>
-          <p>NF-e: 005.548.164</p>
-          <p>SÉRIE: 500</p>
-          <p>EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO</p>
-        </NfeInfo>
-      </Header>
+    <ButtonBackMenu>
+        <DanfeContainer>
+        {/* Cabeçalho com informações estáticas da empresa */}
+        <Header>
+          <CompanyInfo>
+            <h3>TECNOSPEED & TECNOLOGIA</h3>
+            <p>RUA DO POVO, 123</p>
+            <p>CNPJ: 08.137.668/0001-60</p>
+            <p>UF: PR</p>
+          </CompanyInfo>
+          <NfeInfo>
+            <p>NF-e: 005.548.164</p>
+            <p>SÉRIE: 500</p>
+            <p>EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO</p>
+          </NfeInfo>
+        </Header>
 
-      {/* Operação fixa */}
-      <NaturezaOperacao>
-        VENDA DE MERCADORIA ADQ. DE TERCEIRO - PF E PJ NÃO CON
-      </NaturezaOperacao>
+        {/* Operação fixa */}
+        <NaturezaOperacao>
+          VENDA DE MERCADORIA ADQ. DE TERCEIRO - PF E PJ NÃO CON
+        </NaturezaOperacao>
 
-      {/* Campos manuais para o cliente */}
-      <FormField>
-        <Label>Nome do Cliente:</Label>
-        <Input 
-          type="text" 
-          value={cliente} 
-          onChange={(e) => setCliente(e.target.value)} 
-          placeholder="Nome do Cliente" 
-        />
-      </FormField>
+        {/* Campos manuais para o cliente */}
+        <FormField>
+          <Label>Nome do Cliente:</Label>
+          <Input 
+            type="text" 
+            value={cliente} 
+            onChange={(e) => setCliente(e.target.value)} 
+            placeholder="Nome do Cliente" 
+          />
+        </FormField>
 
-      <FormField>
-        <Label>Endereço:</Label>
-        <Input 
-          type="text" 
-          value={endereco} 
-          onChange={(e) => setEndereco(e.target.value)} 
-          placeholder="Endereço" 
-        />
-      </FormField>
+        <FormField>
+          <Label>Endereço:</Label>
+          <Input 
+            type="text" 
+            value={endereco} 
+            onChange={(e) => setEndereco(e.target.value)} 
+            placeholder="Endereço" 
+          />
+        </FormField>
 
-      {/* Adição de itens */}
-      <FormField>
-        <Label>Descrição do Produto:</Label>
-        <Input 
-          type="text" 
-          value={descricao} 
-          onChange={(e) => setDescricao(e.target.value)} 
-          placeholder="Descrição do Produto" 
-        />
-      </FormField>
+        {/* Adição de itens */}
+        <FormField>
+          <Label>Descrição do Produto:</Label>
+          <Input 
+            type="text" 
+            value={descricao} 
+            onChange={(e) => setDescricao(e.target.value)} 
+            placeholder="Descrição do Produto" 
+          />
+        </FormField>
 
-      <FormField>
-        <Label>Quantidade:</Label>
-        <Input 
-          type="number" 
-          value={quantidade} 
-          onChange={(e) => setQuantidade(Number(e.target.value))} 
-          placeholder="Quantidade" 
-        />
-      </FormField>
+        <FormField>
+          <Label>Quantidade:</Label>
+          <Input 
+            type="number" 
+            value={quantidade} 
+            onChange={(e) => setQuantidade(Number(e.target.value))} 
+            placeholder="Quantidade" 
+          />
+        </FormField>
 
-      <FormField>
-        <Label>Valor Unitário:</Label>
-        <Input 
-          type="number" 
-          value={valorUnitario} 
-          onChange={(e) => setValorUnitario(Number(e.target.value))} 
-          placeholder="Valor Unitário" 
-        />
-      </FormField>
-      
-      {/* tabela com calculo de valor total */}
-      
-      <TableContainer>
-        <Table>
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Quantidade</th>
-              <th>Valor Unitário</th>
-              <th>Valor Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {itens.map((item, index) => (
-              <tr key={index}>
-                <td>{item.descricao}</td>
-                <td>{item.quantidade}</td>
-                <td>{item.valorUnitario.toFixed(2)}</td>
-                <td>{(item.quantidade * item.valorUnitario).toFixed(2)}</td>
+        <FormField>
+          <Label>Valor Unitário:</Label>
+          <Input 
+            type="number" 
+            value={valorUnitario} 
+            onChange={(e) => setValorUnitario(Number(e.target.value))} 
+            placeholder="Valor Unitário" 
+          />
+        </FormField>
+        
+        {/* tabela com calculo de valor total */}
+        
+        <TableContainer>
+          <Table>
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Valor Unitário</th>
+                <th>Valor Total</th>
               </tr>
-            ))}
-            <tr>
-              <td colSpan={3}>Total</td>
-              <td>{valorTotal.toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </Table>
-      </TableContainer>
+            </thead>
+            <tbody>
+              {itens.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.descricao}</td>
+                  <td>{item.quantidade}</td>
+                  <td>{item.valorUnitario.toFixed(2)}</td>
+                  <td>{(item.quantidade * item.valorUnitario).toFixed(2)}</td>
+                </tr>
+              ))}
+              <tr>
+                <td colSpan={3}>Total</td>
+                <td>{valorTotal.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </Table>
+        </TableContainer>
 
-      <Button onClick={handleNf}>Adicionar Item</Button>
+        <Button onClick={handleNf}>Adicionar Item</Button>
 
-      {/* Cálculo de imposto (dados fictícios) */}
-      <CaculoImposto>
-        <p>Cálculo de Imposto: Base de Cálculo: 0.01</p>
-        <p>Valor Total: {valorTotal.toFixed(2)}</p>
-      </CaculoImposto>
+        {/* Cálculo de imposto (dados fictícios) */}
+        <CaculoImposto>
+          <p>Cálculo de Imposto: Base de Cálculo: 0.01</p>
+          <p>Valor Total: {valorTotal.toFixed(2)}</p>
+        </CaculoImposto>
 
-      {/* Botão final para emitir a nota */}
-      <Button onClick={() => alert('Nota Fiscal Emitida!')}>Emitir Nota Fiscal</Button>
-    </DanfeContainer>
+        {/* Botão final para emitir a nota */}
+        <Button onClick={() => alert('Nota Fiscal Emitida!')}>Emitir Nota Fiscal</Button>
+      </DanfeContainer>
+      <button>
+          <Link className="backMenu" to="/initialpage">Voltar</Link>
+      </button>
+    </ButtonBackMenu>
   );
 };
 

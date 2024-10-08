@@ -10,6 +10,7 @@ import SearchClientes from './pages/Consultas/Clientes';
 import EmissaoNotaFiscal from './pages/NotasFiscais/NotaSaida';
 import NotaFiscal from './pages/NotasFiscais/NotaEntrada';
 import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
+import SearchFornecedores from './pages/Consultas/Fornecedores';
 
 
 
@@ -22,7 +23,10 @@ const App = () => {
             <GlobalStyle />
             <Router>
                 <Routes>
+                    {/* AREA DE LOGIN */}
                     <Route path="/" element={<LoginPage />} />
+                    
+                    {/* PAINEL ADMIN */}
                     <Route path="/initialpage" element={<ContainerGeral />} />
                     
                     {/*  CADASTROS PRODUTOS/ CLIENTES  E ETC.*/}
@@ -34,6 +38,7 @@ const App = () => {
                     {/*CONSULTAS CLIENTES PRODUTOS E FORNECEDORES*/}
                     <Route path='/consultarProdutos' element={<SearchProdutos />} />
                     <Route path='/buscarClientes' element={<SearchClientes />} />
+                    <Route path='/buscarFornecedor' element={<SearchFornecedores/>} />
 
                     {/*EMISSAO DE NOTA FISCAL*/}
                     <Route path='/notaFiscal' element={<EmissaoNotaFiscal />} />

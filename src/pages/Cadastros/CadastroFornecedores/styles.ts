@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 export const ContainerGrid = styled.div`
     width: 1640px;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     margin: 0 auto;
+    margin-top: 40px;
+    border: 1px solid #000;
 `
 export const ContentForm = styled.div`
     width: 1440px;
@@ -26,7 +28,7 @@ export const FirtMenuCad = styled.div`
         font-family: Helvetica;
         text-align: center;
         margin-bottom: 40px;
-        margin-top: 40px;
+        margin-top: 20px;
     }
 
     form {

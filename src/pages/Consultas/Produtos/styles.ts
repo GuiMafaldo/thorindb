@@ -38,7 +38,8 @@ export const TableWrapper = styled.div`
         display: flex;
         justify-content: flex-end;
         margin-bottom: 6px;
-            input {
+            
+        input {
                 display: flex;
                 flex-direction: row-reverse;
                 padding: 10px;
@@ -46,7 +47,9 @@ export const TableWrapper = styled.div`
                 border-radius: 5px;
                 font-size: 1em;
                 margin-right: 2px;
+                margin-top: 20px;
                 width: 300px;
+                height: 40px;
             }
 
             button{
