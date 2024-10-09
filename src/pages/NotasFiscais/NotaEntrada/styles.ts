@@ -1,62 +1,65 @@
-import styled from "styled-components";
+import styled from "styled-components"
+
+interface TabProps {
+  active: boolean;
+}
 
 export const Container = styled.div`
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: Helvetica;
-`;
+  display: flex;
+  flex-direction: column;
+  width: 91vw;
+  margin: 0 auto;
+  margin-left: -100px;
 
-export const Title = styled.h2`
-  text-align: center;
-  color: #333;
-`;
+   h1 {
+    margin: 0 auto;
+  }
 
-export const SectionTitle = styled.h3`
-  margin-top: 20px;
-  color: #555;
-`;
+`
 
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box; /* Inclui padding e border no cálculo da largura */
-`;
+export const Header = styled.div`
+  background-color: #e9e9e9;
+  color: #000;
+  padding: 26px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 
 export const Table = styled.table`
-  width: 100%;
+  width: 1640px;
   border-collapse: collapse;
-  margin-top: 20px;
+  font-size: 12px;
+`
 
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
+export const Th = styled.th`
+  background-color: #e0e0e0;
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #ccc;
+`
 
-  th {
-    background-color: #f2f2f2;
-    color: #333;
-  }
+export const Td = styled.td`
+  padding: 5px;
+  border: 1px solid #ccc;
+`
 
-  tr:hover {
-    background-color: #f1f1f1;
-  }
-`;
+export const Footer = styled.div`
+  padding: 10px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+`
 
 export const Button = styled.button`
-  padding: 10px 15px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #000;
-  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
   cursor: pointer;
-`;
+  
+  &:hover {
+    background-color: #d0d0d0;
+  }
+`

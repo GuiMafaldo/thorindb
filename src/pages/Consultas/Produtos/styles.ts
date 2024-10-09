@@ -12,7 +12,6 @@ export const ContainerContent = styled.div`
         a {
             display: flex;
             margin-top: 20px;
-            margin-left: 570px;
             width: 80px;
             text-decoration: none;
             color: #000;
@@ -27,7 +26,10 @@ export const ContainerContent = styled.div`
      
 `
 export const TableWrapper = styled.div`
-  width: 660px;
+  width: 1670px;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
   margin: 0 auto;
   overflow-x: auto;
   font-family: Helvetica;
@@ -57,6 +59,8 @@ export const TableWrapper = styled.div`
                 color: #fff;
                 border: none;
                 padding: 10px 20px;
+                height: 40px;
+                margin-top: 20px;
                 border-radius: 5px;
                 font-size: 1em;
                 cursor: pointer;

@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
 import { handleProdutos } from "../../../api/api";
 import { Produto } from "../../../utils/products";
+import Layout from "../../../Layout";
 
-const SearchProdutos = () => {
+
+const SearchProdutos =  () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [produtos, setProdutos] = useState<Produto[]>([]);
   const [filteredResults, setFilteredResults] = useState<Produto[]>([]);
@@ -42,60 +44,64 @@ const SearchProdutos = () => {
     }
   }, [searchTerm, produtos]);
 
-  return (
-    <ContainerContent>
-        <TableWrapper>
-            <h1>Consultar produtos</h1>
-            <div>
-                <input
-                  type="text"
-                  placeholder="Digite o nome do produto"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
-                />
-                <button onClick={fetchProdutos}>Buscar</button>
-            </div>
 
-            {isLoading ? (
-                <p>Carregando...</p>
-            ) : error ? (
-                <p>{error}</p>
-            ) : (
-                <table>
-                <TableHead>
-                    <TableRow>
-                    <TableHeader>ID</TableHeader>
-                    <TableHeader>Nome</TableHeader>
-                    <TableHeader>Preço</TableHeader>
-                    <TableHeader>Quantidade</TableHeader>
-                    <TableHeader>Descrição</TableHeader>
-                    <TableHeader>Categoria</TableHeader>
-                    </TableRow>
-                </TableHead>
-                <tbody>
-                    {filteredResults.length > 0 ? (
-                    filteredResults.map((produto) => (
-                        <TableRow key={produto.id}>
-                        <TableData>{produto.id}</TableData>
-                        <TableData>{produto.nome}</TableData>
-                        <TableData>R$ {produto.preco.toFixed(2)}</TableData>
-                        <TableData>{produto.quantidade}</TableData>
-            
-                        <TableData>{produto.descricao}</TableData>
-                        
-                        </TableRow>
-                    ))
-                    ) : (
-                    <TableRow>
-                        <TableData colSpan={9}>Nenhum produto encontrado</TableData>
-                    </TableRow>
-                    )}
-                </tbody>
-                </table>
-            )}
-            <a href="/initialpage">Voltar</a>
-            </TableWrapper>
-    </ContainerContent>
+  return (
+    <Layout>
+      <ContainerContent>
+          <TableWrapper>
+              <h1>Consultar produtos</h1>
+              <div>
+                  <input
+                    type="text"
+                    placeholder="Digite o nome do produto"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
+                  />
+                  <button onClick={fetchProdutos}>Buscar</button>
+              </div>
+
+              {isLoading ? (
+                  <p>Carregando...</p>
+              ) : error ? (
+                  <p>{error}</p>
+              ) : (
+                  <table>
+                  <TableHead>
+                      <TableRow>
+                      <TableHeader>ID</TableHeader>
+                      <TableHeader>Nome</TableHeader>
+                      <TableHeader>Preço</TableHeader>
+                      <TableHeader>Quantidade</TableHeader>
+                      <TableHeader>Descrição</TableHeader>
+                      <TableHeader>Categoria</TableHeader>
+                      </TableRow>
+                  </TableHead>
+                  <tbody>
+                      {filteredResults.length > 0 ? (
+                      filteredResults.map((produto) => (
+                          <TableRow key={produto.id}>
+                          <TableData>{produto.id}</TableData>
+                          <TableData>{produto.nome}</TableData>
+                          <TableData>R$ {produto.preco.toFixed(2)}</TableData>
+                          <TableData>{produto.quantidade}</TableData>
+              
+                          <TableData>{produto.descricao}</TableData>
+                          
+                          </TableRow>
+                      ))
+                      ) : (
+                      <TableRow>
+                          <TableData colSpan={9}>Nenhum produto encontrado</TableData>
+                      </TableRow>
+                      )}
+                  </tbody>
+                  </table>
+              )}
+              <a href="/initialpage">Voltar</a>
+              </TableWrapper>
+      </ContainerContent>
+    </Layout>
+    
   );
 };
 

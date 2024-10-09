@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './LoginComponent'
-import ContainerGeral from '../src/Contrainer';
+import Layout from '../src/Layout';
 import CadColaboradores from './pages/Cadastros/CadastroColaboradores';
 import CadastroDeClients from './pages/Cadastros/CadastroClientes';
 import CadastrarProdutos from './pages/Cadastros/CadastroProdutos';
@@ -11,6 +11,7 @@ import EmissaoNotaFiscal from './pages/NotasFiscais/NotaSaida';
 import NotaFiscal from './pages/NotasFiscais/NotaEntrada';
 import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
 import SearchFornecedores from './pages/Consultas/Fornecedores';
+import PaginaDeRegistroDeVendas from './pages/Vendas';
 
 
 
@@ -27,7 +28,7 @@ const App = () => {
                     <Route path="/" element={<LoginPage />} />
                     
                     {/* PAINEL ADMIN */}
-                    <Route path="/initialpage" element={<ContainerGeral />} />
+                    <Route path="/initialpage" element={<Layout />} />
                     
                     {/*  CADASTROS PRODUTOS/ CLIENTES  E ETC.*/}
                     <Route path='/colaboradores' element={<CadColaboradores />} />
@@ -39,6 +40,7 @@ const App = () => {
                     <Route path='/consultarProdutos' element={<SearchProdutos />} />
                     <Route path='/buscarClientes' element={<SearchClientes />} />
                     <Route path='/buscarFornecedor' element={<SearchFornecedores/>} />
+                    <Route path='/vendas' element={<PaginaDeRegistroDeVendas />} />
 
                     {/*EMISSAO DE NOTA FISCAL*/}
                     <Route path='/notaFiscal' element={<EmissaoNotaFiscal />} />

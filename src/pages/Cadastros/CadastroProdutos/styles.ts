@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-  margin-top: 10%;
+display: flex;
+flex-direction: column;
+width: 1640px;
+height: 80vh;
+margin: 0 auto;
+margin-top: 120px;
+margin-left: -320px;
   padding: 60px;
   border: 1px solid #e3e3e3;
   border-radius: 8px;
@@ -106,7 +110,7 @@ export const Select = styled.select`
 
 export const Button = styled.button`
   padding: 10px;
-  background-color: #3b28cc;
+  background-color: #000;
   color: white;
   border: none;
   border-radius: 4px;
@@ -117,6 +121,7 @@ export const Button = styled.button`
   width: 50%;
 
   &:hover {
-    background-color: #3b28f1;
+    background-color: #fff;
+    color: #000;
   }
 `;

@@ -1,157 +1,195 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
-export const ButtonBackMenu = styled.div`
-  display: flex;
- 
+interface TabProps {
+  active: boolean;
+}
 
-  > button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 10px;
-      margin-right: 10px;
-      width: 80px;
-      height: 30px;
-      padding: 6px;
-      background-color: #000;
-      border: none;
-      border-radius: 6px;
-      
-
-      & .backMenu{
-          color: #fff;
-          font-family: Helvetica;
-          text-decoration: none;
-      }
-  }
+export const Container = styled.div`
+  width: 1440px;
+  margin: 0 auto;
+  margin-left: 10px;
+  margin-top: 20px;
 `
 
-export const DanfeContainer = styled.div`
-  max-width: 900px;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: white;
-  border: 2px solid black;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.4;
-`;
 
-export const Header = styled.header`
+export const StatusContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  border-bottom: 2px solid black;
-  padding-bottom: 10px;
+  gap: 8px;
+  font-size: 14px;
+  color: #000;
+  font-family: Helvetica;
+  
+    & .exit{
+        color: red;
+      }
+      & .condicao{
+        color: green;
+      }
+  `
+  
+  export const StatusText = styled.span`
+  `
+  export const StyleTable = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:hover {
+      background-color: rgba(240, 240, 240, 0.5);
+  }
 `;
 
-export const CompanyInfo = styled.div`
-  text-align: left;
-  width: 50%;
-  
-  h3 {
-    font-size: 1rem;
-    margin: 0;
-  }
-  
-  p {
-    margin: 0;
-    font-size: 0.8rem;
-  }
-`;
-
-export const NfeInfo = styled.div`
-  text-align: right;
-  width: 50%;
-  
-  p {
-    margin: 0;
-    font-size: 0.8rem;
-  }
-`;
-
-export const NaturezaOperacao = styled.div`
-  margin: 10px 0;
-  font-size: 1rem;
-  text-align: center;
+export const TotalRow = styled.tr`
   font-weight: bold;
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
+  background-color: #f9f9f9;
 `;
+  
+  export const Card = styled.div`
+  width: 1630px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`
 
-export const TableContainer = styled.div`
-  margin-bottom: 20px;
-  border: 1px solid black;
-`;
+export const CardContent = styled.div`
+  padding: 24px;
+`
 
-export const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
+export const Grid = styled.div`
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+`
 
-  th, td {
-    border: 1px solid black;
-    padding: 5px;
-    text-align: left;
-    font-size: 0.8rem;
-  }
+export const Row = styled.div`
+  display: flex;
+  gap: 16px;
+`
 
-  th {
-    background-color: #f2f2f2;
-  }
-
-  td {
-    text-align: center;
-  }
-`;
-
-export const CaculoImposto = styled.div`
-  margin-top: 10px;
-  border: 1px solid black;
-  padding: 5px;
-`;
-
-export const DadosProduto = styled.div`
-  margin-top: 10px;
-`;
-
-export const FormField = styled.div`
+export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
-`;
+`
 
 export const Label = styled.label`
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-`;
+  font-size: 14px;
+  margin-bottom: 4px;
+`
 
 export const Input = styled.input`
   padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  border-radius: 4px;
+`
 
-  &:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-`;
+export const Select = styled.select`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`
+
+export const Textarea = styled.textarea`
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`
 
 export const Button = styled.button`
-  padding: 10px 15px;
-  background-color: #007bff;
+  padding: 8px 16px;
+  background-color: #000;
   color: white;
+  margin-top: 22px;
   border: none;
-  border-radius: 3px;
-  font-size: 1rem;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #2563eb;
   }
-`;
+`
+
+export const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+`
+
+export const Th = styled.th`
+  text-align: left;
+  padding: 8px;
+  border-bottom: 2px solid #e5e7eb;
+`
+
+export const Td = styled.td`
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+`
+
+export const ActionBar = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px;
+  background-color: #f3f4f6;
+`
+export const HeaderContainer = styled.header`
+  width: 85vw;
+  height: 20vh;
+  background-color: rgba(0, 0, 0 ,0.1);
+  color: white;
+  padding: 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+`
+
+export const Title = styled.h1`
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Helvetica; 
+  margin-bottom: 16px;
+  text-align: center;
+  color: #000;
+`
+
+export const TabsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const TabList = styled.div`
+  display: flex;
+  gap: 8px;
+`
+
+export const Tab = styled.button<TabProps>`
+  background-color: ${props => props.active ? 'white' : 'transparent'};
+  color: ${props => props.active ? 'black' : 'black'};
+  border: none;
+  padding: 8px 14px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  cursor: pointer;
+  font-family: Helvetica;
+  font-weight: ${props => props.active ? 'bold' : 'normal'};
+  transition: all ease 0.1s;
+
+  &:hover {
+    background-color: ${props => props.active ? 'rgba(0, 0, 0, 0.2)' : ''};
+    color: #fff;
+  }
+`

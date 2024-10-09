@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { submitProdutos } from '../../../api/api';
 
 import { Button, Container, Form, FormGroup, Input, Label, Title } from './styles';
+import Layout from '../../../Layout';
+
 
 
 const CadastrarProduto = () => {
@@ -39,110 +41,113 @@ const CadastrarProduto = () => {
       };
     
       return (
-        <Container>
-          <Title>Cadastro de Produtos</Title>
-          <Form onSubmit={handleSubmit}>
-            <FormGroup>
-              <Label>
-                Nome do Produto:
-                <Input
-                  type="text"
-                  name='nome'
-                  onChange={handleChange}
-                  required
-                  style={{ width: '120%', padding: '8px', marginBottom: '10px' }}
-                />
-              </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label className='sku'>
-                Código (id):
-             </Label>
-                <Input
-                  type="number"
-                  onChange={handleChange}
-                  style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '60px' }}
-                />
-            </FormGroup>
-            <FormGroup>
-              <Label className='precoVenda'>
-                Preço de Venda:
-              </Label>
-                <Input
-                  type="number"
-                  name='preco'
-                  onChange={handleChange}
-                  style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '20px' }}
-                />
-            </FormGroup>
-            <div className='group-unit'>
-                <FormGroup>
+        <Layout>
+          <Container>
+            <Title>Cadastro de Produtos</Title>
+            <Form onSubmit={handleSubmit}>
+              <FormGroup>
                 <Label>
-                    Quantidade:
-                </Label>
-                    <Input
+                  Nome do Produto:
+                  <Input
                     type="text"
-                    name='quantidade'
+                    name='nome'
                     onChange={handleChange}
-                    style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
-                    />
-                </FormGroup>
-                <FormGroup>
-                <Label className='formato'>
-                    Formato:
+                    required
+                    style={{ width: '120%', padding: '8px', marginBottom: '10px' }}
+                  />
                 </Label>
-                    <select name='formato' value={formato} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '26px', marginTop: '4px' }}>
-                        <option value="Simples ou com variação">Simples ou com variação</option>
-                        <option value="Simples">Simples</option>
-                        <option value="Com variação">Com variação</option>
-                    </select>
-                </FormGroup>
-                <FormGroup>
-                <Label className='tipo'>
-                    Tipo:
-                </Label>
-                    <select name='tipo' value={tipo} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '34px', marginTop: '4px' }}>
-                        <option value="Produto">Produto</option>
-                        <option value="Serviço">Serviço</option>
-                    </select>
-                </FormGroup>
-                <FormGroup>
-                <Label className='condicao'>
-                    Condição:
-                </Label>
-                    <select name='condicao' value={condicao} onChange={handleChange} style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '42px', marginTop: '4px' }}>
-                        <option value="Não Especificado">Não Especificado</option>
-                        <option value="Novo">Novo</option>
-                        <option value="Usado">Usado</option>
-                    </select>
-                </FormGroup>
-            </div>
-            <FormGroup>
-              <Label>
-                Descrição do Produto:
-                <textarea
-                  name='descricao'
-                  onChange={handleChange}
-                  style={{ width: '100%', padding: '8px', marginBottom: '10px', height: '100px' }}
-                />
+              </FormGroup>
+              <FormGroup>
+                <Label className='sku'>
+                  Código (id):
               </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label>
-                Categoria:
-                <select name='categoria' value={categoria} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px' }}>
-                  <option value="Sem categoria">Sem categoria</option>
-                  <option value="Categoria 1">Categoria 1</option>
-                  <option value="Categoria 2">Categoria 2</option>
-                </select>
-              </Label>
-            </FormGroup>
-            <Button>
-              Avançar
-            </Button>
-          <a style={{textDecoration:'none', marginTop:'10px', color:'#000', fontWeight: 'bold'}} href="/initialpage">Voltar</a>
-          </Form>
-        </Container>
+                  <Input
+                    type="number"
+                    onChange={handleChange}
+                    style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '60px' }}
+                  />
+              </FormGroup>
+              <FormGroup>
+                <Label className='precoVenda'>
+                  Preço de Venda:
+                </Label>
+                  <Input
+                    type="number"
+                    name='preco'
+                    onChange={handleChange}
+                    style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '20px' }}
+                  />
+              </FormGroup>
+              <div className='group-unit'>
+                  <FormGroup>
+                  <Label>
+                      Quantidade:
+                  </Label>
+                      <Input
+                      type="text"
+                      name='quantidade'
+                      onChange={handleChange}
+                      style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+                      />
+                  </FormGroup>
+                  <FormGroup>
+                  <Label className='formato'>
+                      Formato:
+                  </Label>
+                      <select name='formato' value={formato} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '26px', marginTop: '4px' }}>
+                          <option value="Simples ou com variação">Simples ou com variação</option>
+                          <option value="Simples">Simples</option>
+                          <option value="Com variação">Com variação</option>
+                      </select>
+                  </FormGroup>
+                  <FormGroup>
+                  <Label className='tipo'>
+                      Tipo:
+                  </Label>
+                      <select name='tipo' value={tipo} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '34px', marginTop: '4px' }}>
+                          <option value="Produto">Produto</option>
+                          <option value="Serviço">Serviço</option>
+                      </select>
+                  </FormGroup>
+                  <FormGroup>
+                  <Label className='condicao'>
+                      Condição:
+                  </Label>
+                      <select name='condicao' value={condicao} onChange={handleChange} style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '42px', marginTop: '4px' }}>
+                          <option value="Não Especificado">Não Especificado</option>
+                          <option value="Novo">Novo</option>
+                          <option value="Usado">Usado</option>
+                      </select>
+                  </FormGroup>
+              </div>
+              <FormGroup>
+                <Label>
+                  Descrição do Produto:
+                  <textarea
+                    name='descricao'
+                    onChange={handleChange}
+                    style={{ width: '100%', padding: '8px', marginBottom: '10px', height: '100px' }}
+                  />
+                </Label>
+              </FormGroup>
+              <FormGroup>
+                <Label>
+                  Categoria:
+                  <select name='categoria' value={categoria} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px' }}>
+                    <option value="Sem categoria">Sem categoria</option>
+                    <option value="Categoria 1">Categoria 1</option>
+                    <option value="Categoria 2">Categoria 2</option>
+                  </select>
+                </Label>
+              </FormGroup>
+              <Button>
+                Avançar
+              </Button>
+            <a style={{textDecoration:'none', marginTop:'10px', color:'#000', fontWeight: 'bold'}} href="/initialpage">Voltar</a>
+            </Form>
+          </Container>         
+        </Layout>
+       
       );
     };
 export default CadastrarProduto

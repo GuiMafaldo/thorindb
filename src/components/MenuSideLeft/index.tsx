@@ -1,6 +1,7 @@
 import { DivGeral, SubMenuOpen } from "./styles";
 import {  useState } from 'react'
 import { Link } from "react-router-dom";
+import { Produto } from "../../utils/products";
 
 function SideBarItens () {
     const [menuCad, setMenuCad] = useState<Boolean>(false)
@@ -8,6 +9,8 @@ function SideBarItens () {
     const [estrut, setEstrut] = useState<Boolean>(false)
     const [vendas, setVendas] = useState<Boolean>(false)
     const [fornecedor, setFornecedor] = useState<Boolean>(false)
+    const [produtoVenda, setProdutoVenda] = useState<Produto[]>([])
+    const [produto, setProduto] = useState<Boolean>(false)
     const areaDeTrabalho = {
         initialPage: "Pagina inicial",
         produto: "Produtos",
@@ -15,7 +18,8 @@ function SideBarItens () {
         nf: "Nota fiscal",
         pedidoDeVenda: "Pedidos de venda",
         estoque: "Estoque",
-        fornecedor: "Fornecedor"
+        fornecedor: "Fornecedor",
+        vendas: "Vendas realizadas"
 
     }
     return(
@@ -61,6 +65,21 @@ function SideBarItens () {
                             </ul>
                         </SubMenuOpen>
                         ): ''}
+                        
+                    </li>
+                    <li>
+                        <Link onClick={() => setProduto(!produto)} to="#">
+                            {areaDeTrabalho.vendas}
+                        </Link>
+                        {produto ? (
+                            <SubMenuOpen className="is-open">
+                            <ul>
+                                <li className="list-subMenu">
+                                    <Link className="subMenu" to="/vendas">Vendas</Link>
+                                </li>
+                            </ul>
+                        </SubMenuOpen>
+                        ): ''}      
                         
                     </li>
                     <li>

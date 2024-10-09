@@ -4,6 +4,8 @@ import { handleClientes } from "../../../api/api";
 import { Cliente } from "../../../utils/cliente";
 
 import { ContainerContent, TableWrapper, TableHead, TableRow, TableHeader, TableData } from "../Produtos/styles";
+import Layout from "../../../Layout";
+
 
 
 const SearchClientes = () => {
@@ -44,59 +46,62 @@ const SearchClientes = () => {
       }
     }, [searchTerm, clientes]);
     return(
+      <Layout>
         <ContainerContent>
-            <TableWrapper>
-                <h1>Consultar Clientes</h1>
-                <div>
-                    <input
-                    type="text"
-                    placeholder="Digite o nome do cliente"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
-                    />
-                    <button onClick={fetchClientes}>Buscar</button>
-                </div>
+              <TableWrapper>
+                  <h1>Consultar Clientes</h1>
+                  <div>
+                      <input
+                      type="text"
+                      placeholder="Digite o nome do cliente"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
+                      />
+                      <button onClick={fetchClientes}>Buscar</button>
+                  </div>
 
-                {isLoading ? (
-                    <p>Carregando...</p>
-                ) : error ? (
-                    <p>{error}</p>
-                ) : (
-                    <table>
-                    <TableHead>
-                        <TableRow>
-                        <TableHeader>ID</TableHeader>
-                        <TableHeader>Nome</TableHeader>
-                        <TableHeader>Telefone</TableHeader>
-                        <TableHeader>Email</TableHeader>
-                        <TableHeader>Cidade</TableHeader>
-                        <TableHeader>Cep</TableHeader>
-                        </TableRow>
-                    </TableHead>
-                        <tbody>
-                            {filteredResults.length > 0 ? (
-                            filteredResults.map((cliente) => (
-                                <TableRow key={cliente.id}>
-                                <TableData>{cliente.id}</TableData>
-                                <TableData>{cliente.nome}</TableData>
-                                <TableData>{cliente.telefone}</TableData>
-                                <TableData>{cliente.email}</TableData>
-                                <TableData>{cliente.cidade}</TableData>
-                                <TableData>{cliente.cep}</TableData>
-                                
-                                </TableRow>
-                            ))
-                            ) : (
-                            <TableRow>
-                                <TableData colSpan={9}>Nenhum produto encontrado</TableData>
-                            </TableRow>
-                            )}
-                        </tbody>
-                </table>
-            )}
-            <a href="/initialpage">Voltar</a>
-            </TableWrapper>
-    </ContainerContent>
+                  {isLoading ? (
+                      <p>Carregando...</p>
+                  ) : error ? (
+                      <p>{error}</p>
+                  ) : (
+                      <table>
+                      <TableHead>
+                          <TableRow>
+                          <TableHeader>ID</TableHeader>
+                          <TableHeader>Nome</TableHeader>
+                          <TableHeader>Telefone</TableHeader>
+                          <TableHeader>Email</TableHeader>
+                          <TableHeader>Cidade</TableHeader>
+                          <TableHeader>Cep</TableHeader>
+                          </TableRow>
+                      </TableHead>
+                          <tbody>
+                              {filteredResults.length > 0 ? (
+                              filteredResults.map((cliente) => (
+                                  <TableRow key={cliente.id}>
+                                  <TableData>{cliente.id}</TableData>
+                                  <TableData>{cliente.nome}</TableData>
+                                  <TableData>{cliente.telefone}</TableData>
+                                  <TableData>{cliente.email}</TableData>
+                                  <TableData>{cliente.cidade}</TableData>
+                                  <TableData>{cliente.cep}</TableData>
+                                  
+                                  </TableRow>
+                              ))
+                              ) : (
+                              <TableRow>
+                                  <TableData colSpan={9}>Nenhum produto encontrado</TableData>
+                              </TableRow>
+                              )}
+                          </tbody>
+                  </table>
+              )}
+              <a href="/initialpage">Voltar</a>
+              </TableWrapper>
+        </ContainerContent>
+      </Layout>
+      
     )
 }
 

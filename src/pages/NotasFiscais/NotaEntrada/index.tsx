@@ -1,169 +1,185 @@
-import React, { useState } from 'react';
-import { Container, Title, SectionTitle, Input, Table, Button } from './styles';
+import React, { useEffect, useState } from 'react';
 
-const NotaFiscal = () => {
-  const [vendedor, setVendedor] = useState({
-    razaoSocial: '',
-    cnpj: '',
-    endereco: '',
-    cidade: '',
-    estado: '',
-    telefone: ''
-  });
+import Layout from '../../../Layout';
+import { handleProdutos } from '../../../api/api';
+import { Produto } from "../../../utils/products";
 
-  const [produtos, setProdutos] = useState<String | any>([
-    { codigo: '', descricao: '', quantidade: '', valorUnitario: '' }
-  ]);
+import { Table, Button, Header, Footer, Th, Td, Container } from './styles';
 
-  const handleVendedorChange = (e: any) => {
-    const { name, value } = e.target;
-    setVendedor((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
-  const handleProdutoChange = (index: any, e: any) => {
-    const { name, value } = e.target;
-    const updatedProdutos = [...produtos];
-    updatedProdutos[index][name] = value;
-    setProdutos(updatedProdutos);
-  };
+const NotaFiscal: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [filteredResults, setFilteredResults] = useState<Produto[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [produtos, setProdutos] = useState<Produto[]>([]);
 
+  const [linhaFocada, setLinhaFocada] = useState<number | null>(null); // Estado para linha focada
+
+  const linhasVazias = 20; // Define a quantidade de linhas que deseja exibir
+
+  // Função para adicionar um novo produto (linha)
   const addProduto = () => {
-    setProdutos([...produtos, { codigo: '', descricao: '', quantidade: '', valorUnitario: '' }]);
+    setProdutos([...produtos, { id: 0, nome: '', descricao: '', quantidade: 0, preco: 0 }]);  
   };
 
-  const removeProduto = (index: any) => {
-    const updatedProdutos = produtos.filter((_: any, i: any) => i !== index);
+  // Função para remover um produto
+  const removeProduto = (index: number) => {
+    const updatedProdutos = produtos.filter((_, i) => i !== index);
+    setProdutos(updatedProdutos);
+    setLinhaFocada(null); // Limpa a linha focada após a remoção
+  };
+
+  // Função para lidar com a mudança no campo de código do produto
+  const handleCodigoChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const id = e.target.value;
+    const produtoEncontrado = produtos.find(prod => prod.id === id);
+
+    const updatedProdutos = [...produtos];
+
+    if (produtoEncontrado) {
+      // Preenche os campos se o produto for encontrado
+      updatedProdutos[index] = {
+        id: produtoEncontrado.id,
+        nome:produtoEncontrado.nome,
+        descricao: produtoEncontrado.descricao,
+        quantidade: produtoEncontrado.quantidade,
+        preco: produtoEncontrado.preco,
+      };
+    } else {
+      // Se não encontrar, reseta os campos
+      updatedProdutos[index] = {
+        id: 0,
+        nome: '',
+        descricao: '',
+        quantidade: 0,
+        preco: 0,
+      };
+    }
+
     setProdutos(updatedProdutos);
   };
 
+  // Função para calcular o valor total
   const calcularTotal = () => {
-    return produtos.reduce((total: any, produto: any) => {
-      const valor = parseFloat(produto.valorUnitario) || 0;
+    return produtos.reduce((total, produto: any) => {
+      const valor = parseFloat(produto.preco) || 0;
       const quantidade = parseInt(produto.quantidade, 10) || 0;
       return total + valor * quantidade;
     }, 0);
   };
 
+  const handleProductsData = async () =>{
+    setIsLoading(true)
+    setError(null)
+    try{
+      const res = await handleProdutos(searchTerm)
+      setProdutos(res)
+      setFilteredResults(res)
+    } catch(err){
+      setError('Erro ao buscar dados')
+    } finally{
+      setIsLoading(false)
+    }
+  }
+    // Chamar a função para buscar produtos ao montar o componente
+    useEffect(() => {
+      handleProductsData();
+    }, []);
+  
+    // UseEffect para filtrar os resultados com base no termo de busca
+    useEffect(() => {
+      if (searchTerm) {
+        const filtered = produtos.filter((produto) =>
+          produto.nome.toLowerCase().includes(searchTerm.toLowerCase()) // Aplica o filtro pelo nome do produto
+        );
+        setFilteredResults(filtered);
+      } else {
+        setFilteredResults(produtos); // Se o termo de busca estiver vazio, mostra todos os produtos
+      }
+    }, [searchTerm, produtos]);
+
   return (
-    <Container>
-      <Title>Nota Fiscal de Entrada</Title>
-
-      {/* Dados da Empresa Vendedora */}
-      <SectionTitle>Dados da Empresa Vendedora:</SectionTitle>
-      <Input
-        type="text"
-        name="razaoSocial"
-        placeholder="Razão Social"
-        value={vendedor.razaoSocial}
-        onChange={handleVendedorChange}
-      />
-      <Input
-        type="text"
-        name="cnpj"
-        placeholder="CNPJ"
-        value={vendedor.cnpj}
-        onChange={handleVendedorChange}
-      />
-      <Input
-        type="text"
-        name="endereco"
-        placeholder="Endereço"
-        value={vendedor.endereco}
-        onChange={handleVendedorChange}
-      />
-      <Input
-        type="text"
-        name="cidade"
-        placeholder="Cidade"
-        value={vendedor.cidade}
-        onChange={handleVendedorChange}
-      />
-      <Input
-        type="text"
-        name="estado"
-        placeholder="Estado"
-        value={vendedor.estado}
-        onChange={handleVendedorChange}
-      />
-      <Input
-        type="text"
-        name="telefone"
-        placeholder="Telefone"
-        value={vendedor.telefone}
-        onChange={handleVendedorChange}
-      />
-
-      {/* Produtos */}
-      <SectionTitle>Detalhes da Mercadoria:</SectionTitle>
+    <Layout>
+      <Container>
+      <Header>
+        <h1 style={{fontFamily:'Helvetica', fontSize: '2em'}}>Nota Fiscal mercadorias</h1>
+      </Header>
       <Table>
         <thead>
           <tr>
-            <th>Código do Produto</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Valor Unitário (R$)</th>
-            <th>Valor Total (R$)</th>
-            <th>Ações</th>
+            <Th>Código</Th>
+            <Th>Descrição</Th>
+            <Th>Quantidade</Th>
+            <Th>Valor Unitário</Th>
+            <Th>Ações</Th>
           </tr>
         </thead>
         <tbody>
-          {produtos.map((produto: any, index: any) => (
+          {produtos.map((produto, index) => (
             <tr key={index}>
-              <td>
-                <Input
+              <Td>
+                <input
                   type="text"
-                  name="codigo"
+                  name="id"
+                  value={produto.id}
+                  onFocus={() => setLinhaFocada(index)} // Foca na linha
+                  onBlur={() => setLinhaFocada(null)} // Remove o foco ao sair
+                  onChange={(e) => handleCodigoChange(index, e)}
+                />
+              </Td>
+              <Td>{produto.nome}</Td>
+              <Td>{produto.descricao}</Td>
+              <Td>{produto.quantidade}</Td>
+              <Td>{produto.preco}</Td>
+              <Td>
+                {linhaFocada === index && (
+                  <>
+                    <button onClick={() => removeProduto(index)}>Remover</button>
+                    <button onClick={addProduto}>Adicionar</button>
+                  </>
+                )}
+              </Td>
+            </tr>
+          ))}
+          {/* Adiciona linhas vazias, se necessário */}
+          {Array.from({ length: linhasVazias - produtos.length }).map((_, index) => (
+            <tr key={produtos.length + index}>
+              <Td>
+                <input
+                  style={{ border: 'none' }}
+                  type="text"
+                  name="id"
                   placeholder="Código"
-                  value={produto.codigo}
-                  onChange={(e) => handleProdutoChange(index, e)}
+                  onFocus={() => setLinhaFocada(produtos.length + index)} // Foca na linha
+                  onBlur={() => setLinhaFocada(null)} // Remove o foco ao sair
+                  onChange={(e) => handleCodigoChange(produtos.length + index, e)}
                 />
-              </td>
-              <td>
-                <Input
-                  type="text"
-                  name="descricao"
-                  placeholder="Descrição"
-                  value={produto.descricao}
-                  onChange={(e) => handleProdutoChange(index, e)}
-                />
-              </td>
-              <td>
-                <Input
-                  type="number"
-                  name="quantidade"
-                  placeholder="Quantidade"
-                  value={produto.quantidade}
-                  onChange={(e) => handleProdutoChange(index, e)}
-                />
-              </td>
-              <td>
-                <Input
-                  type="number"
-                  step="0.01"
-                  name="valorUnitario"
-                  placeholder="Valor Unitário"
-                  value={produto.valorUnitario}
-                  onChange={(e) => handleProdutoChange(index, e)}
-                />
-              </td>
-              <td>
-                {(produto.quantidade * produto.valorUnitario).toFixed(2)}
-              </td>
-              <td>
-                <Button onClick={() => removeProduto(index)}>Remover</Button>
-              </td>
+              </Td>
+              <Td></Td>
+              <Td></Td>
+              <Td></Td>
+              <Td>
+                {linhaFocada === produtos.length + index && (
+                  <>
+                    <Button onClick={() => removeProduto(produtos.length + index)}>Remover</Button>
+                    <Button onClick={addProduto}>Adicionar</Button>
+                  </>
+                )}
+              </Td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Button onClick={addProduto}>Adicionar Produto</Button>
+      <Footer>
+        <div style={{display: 'flex', alignItems: 'center', gap:'10px'}}>
+          <p>Total: {calcularTotal()}</p>
+          <Button>Guardar Nota fiscal</Button>
 
-      {/* Total */}
-      <SectionTitle>Total Geral: R$ {calcularTotal().toFixed(2)}</SectionTitle>
-    </Container>
+        </div>
+      </Footer>
+      </Container>
+    </Layout>
   );
 };
 

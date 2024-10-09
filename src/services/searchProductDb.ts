@@ -53,6 +53,7 @@ export const useProductsArea = () => {
     searchProducts(); // Busca produtos quando o componente é montado
   }, []);
 
+
   return {
     searchTerm,
     setSearchTerm,
@@ -63,5 +64,6 @@ export const useProductsArea = () => {
     handleSearchProducts,
     handleChangeProducts,
     setShowResults,
+    
   };
 };

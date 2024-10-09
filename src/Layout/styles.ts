@@ -9,6 +9,8 @@ export const ContainerPageCentral = styled.div`
     & .aside-and-content {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 10px;
     }
 
 

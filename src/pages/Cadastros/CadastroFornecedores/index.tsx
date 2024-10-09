@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { submitFornecedor } from '../../../api/api'
 
 import { ContainerGrid, ContentForm, FirtMenuCad} from "./styles"
+import Layout from "../../../Layout"
+
 
 
 const CadastroFornecedores = () => {
@@ -34,6 +36,7 @@ const CadastroFornecedores = () => {
         }
     }
     return(
+       <Layout>
             <ContainerGrid>
                         <FirtMenuCad>
                             <h3>Dados Empresa</h3>
@@ -158,6 +161,8 @@ const CadastroFornecedores = () => {
                         </ContentForm>
                 </FirtMenuCad>
             </ContainerGrid>
+       </Layout>
+        
     )
 }
 export default CadastroFornecedores

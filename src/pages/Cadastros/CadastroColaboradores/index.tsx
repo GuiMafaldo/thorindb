@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Colaboradores, ContainerForm, ContainerGeral, FormDisplay } from "./styles"
+import Layout from '../../../Layout'
+
 
 const CadColaboradores = () => {
     return(
-            <ContainerGeral>
+       
+            <Layout>
+                <ContainerGeral>
                 <ContainerForm>
                         <Colaboradores>
                             <div className="title-and-back">
@@ -44,6 +48,8 @@ const CadColaboradores = () => {
                         </Colaboradores>
                 </ContainerForm>
             </ContainerGeral>
+            </Layout>
+        
     )
 }
 
