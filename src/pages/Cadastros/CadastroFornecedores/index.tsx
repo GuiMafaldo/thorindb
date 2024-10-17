@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from 'react'
 
-import { submitFornecedor } from '../../../api/api'
+import { submitFornecedor } from '../../../services/api/api'
 
 import { ContainerGrid, ContentForm, FirtMenuCad} from "./styles"
 import Layout from "../../../Layout"

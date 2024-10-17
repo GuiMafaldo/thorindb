@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderPage, DivListItens, DivHeader, ButtonLogon } from "./styles";
-import { useDataHora } from "../../services/dataHora";
+import { useDataHora } from "../../utils/dataHora";
 
 const InitialPage: React.FC = () => {
     const dataHora = useDataHora()

@@ -1,7 +1,7 @@
 import  React, { useState, useEffect } from 'react'
 import { TableWrapper, TableHead, TableRow, TableHeader, TableData } from '../Produtos/styles'
-import { Fornecedor } from '../../../utils/fornecedor'
-import { handleFornecedores } from '../../../api/api'
+import { Fornecedor } from '../../../services/Interfaces/fornecedor'
+import { handleAllFornecedores } from '../../../services/api/api'
 import Layout from '../../../Layout'
 
 
@@ -17,7 +17,7 @@ const SearchFornecedores = () => {
         setIsLoading(true)
         setError(null)
         try {
-            const response = await handleFornecedores(searchTerm)
+            const response = await handleAllFornecedores(searchTerm)
             setFornecedor(response)
             setFilter(response)
         } catch(error) {

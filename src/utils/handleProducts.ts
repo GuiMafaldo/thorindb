@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Produto } from "../utils/products";
-import { handleProdutos } from "../api/api";
+import { Produto } from "../services/Interfaces/products";
+import { handleAllProducts } from "../services/api/api";
 
 export const useProductsArea = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -15,10 +15,10 @@ export const useProductsArea = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await handleProdutos(searchTerm);
+      const res = await handleAllProducts(searchTerm);
       setProducts(res);
-      setFilteredProducts([]); // Inicialmente, a lista filtrada está vazia
-      setShowResults(false); // Não exibe resultados até que a busca seja realizada
+      setFilteredProducts(res); // Inicialmente, a lista filtrada está vazia
+      setShowResults(true); // Não exibe resultados até que a busca seja realizada
     } catch (err) {
       setError("Erro ao buscar produtos");
     } finally {
@@ -28,7 +28,7 @@ export const useProductsArea = () => {
 
   const filterProducts = (term: string) => {
     if (term.trim() === "") {
-      setFilteredProducts([]); // Não mostra nenhum produto quando o termo está vazio
+      setFilteredProducts(products); // Não mostra nenhum produto quando o termo está vazio
     } else {
       const filtered = products.filter((produto) =>
         produto.nome.toLowerCase().includes(term.toLowerCase())
@@ -43,7 +43,7 @@ export const useProductsArea = () => {
     filterProducts(searchTerm);
   };
 
-  const handleChangeProducts = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeProducts = (event: any) => {
     const value = event.target.value;
     setSearchTerm(value);
     filterProducts(value); // Aplica o filtro em tempo real
@@ -56,14 +56,10 @@ export const useProductsArea = () => {
 
   return {
     searchTerm,
-    setSearchTerm,
     error,
     isLoading,
     showResults,
-    filteredProducts,
-    handleSearchProducts,
-    handleChangeProducts,
-    setShowResults,
-    
+    filteredProducts, 
+    handleChangeProducts
   };
 };

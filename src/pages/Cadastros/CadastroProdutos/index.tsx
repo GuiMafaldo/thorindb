@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { submitProdutos } from '../../../api/api';
+import { submitProduct } from '../../../services/api/api';
 
 import { Button, Container, Form, FormGroup, Input, Label, Title } from './styles';
 import Layout from '../../../Layout';
@@ -32,8 +32,8 @@ const CadastrarProduto = () => {
 
       const handleSubmit = async(e: any) => {
         e.preventDefault();
-       const resultado = await submitProdutos(cadProduto);
-       if (resultado) {
+       const resultado = await submitProduct(cadProduto);
+       if (resultado === 200) {
             alert("Produto cadastrado com sucesso!");
         } else {
             alert("Erro ao cadastrar produto");

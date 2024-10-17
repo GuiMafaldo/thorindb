@@ -1,49 +1,18 @@
-import { useState, useEffect } from "react";
+import { useProductsArea } from '../../../utils/handleProducts'
+
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
-import { handleProdutos } from "../../../api/api";
-import { Produto } from "../../../utils/products";
 import Layout from "../../../Layout";
 
 
 const SearchProdutos =  () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [produtos, setProdutos] = useState<Produto[]>([]);
-  const [filteredResults, setFilteredResults] = useState<Produto[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  // Função para buscar os produtos da API
-  const fetchProdutos = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const res = await handleProdutos(searchTerm); // Busca todos os produtos da API
-      setProdutos(res); // Salva todos os produtos no estado
-      setFilteredResults(res); // Inicialmente, todos os produtos são renderizados
-    } catch (err) {
-      setError("Erro ao buscar dados");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Chamar a função para buscar produtos ao montar o componente
-  useEffect(() => {
-    fetchProdutos();
-  }, []);
-
-  // UseEffect para filtrar os resultados com base no termo de busca
-  useEffect(() => {
-    if (searchTerm) {
-      const filtered = produtos.filter((produto) =>
-        produto.nome.toLowerCase().includes(searchTerm.toLowerCase()) // Aplica o filtro pelo nome do produto
-      );
-      setFilteredResults(filtered);
-    } else {
-      setFilteredResults(produtos); // Se o termo de busca estiver vazio, mostra todos os produtos
-    }
-  }, [searchTerm, produtos]);
-
+const {
+  searchTerm,
+  error,
+  isLoading,
+  showResults,
+  filteredProducts,
+  handleChangeProducts
+} = useProductsArea()
 
   return (
     <Layout>
@@ -55,9 +24,9 @@ const SearchProdutos =  () => {
                     type="text"
                     placeholder="Digite o nome do produto"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)} // Atualiza o termo de busca
+                    onChange={handleChangeProducts} // Atualiza o termo de busca
                   />
-                  <button onClick={fetchProdutos}>Buscar</button>
+                  <button onClick={() => handleChangeProducts({target:  { value: searchTerm }})}>Buscar</button>
               </div>
 
               {isLoading ? (
@@ -77,8 +46,13 @@ const SearchProdutos =  () => {
                       </TableRow>
                   </TableHead>
                   <tbody>
-                      {filteredResults.length > 0 ? (
-                      filteredResults.map((produto) => (
+                    {isLoading ? (
+                      <p>Carregando...</p>
+                    ): (
+                      <p>{error}</p>
+                    )}
+                      {filteredProducts.length > 0 ? (
+                      filteredProducts.map((produto) => (
                           <TableRow key={produto.id}>
                           <TableData>{produto.id}</TableData>
                           <TableData>{produto.nome}</TableData>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { handlelogin } from "../api/api";
+import { handleLogin } from "../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
 
 const LoginPage: React.FC = () => {
@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => {
         setLoading(true);
 
         try {
-            const response = await handlelogin({ nome: userData, senha: password });
+            const response = await handleLogin({ nome: userData, senha: password });
 
             if (response && response.success) {
                 localStorage.setItem('userName', userData); // Armazena o nome do usuário

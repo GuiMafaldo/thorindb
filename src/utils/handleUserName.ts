@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { handlelogin } from "../api/api";
+import { handleLogin } from "../services/api/api";
 
 // Hook personalizado para obter o nome do usuário após autenticação
 export const useGetNameUser = () => {
@@ -14,7 +14,7 @@ export const useGetNameUser = () => {
 
         try {
             // Chama a função de login passando userData e password
-            const response = await handlelogin({ nome: userData, senha: password });
+            const response = await handleLogin({ nome: userData, senha: password });
             
             if (response && response.success) {
                 console.log(response.userName)

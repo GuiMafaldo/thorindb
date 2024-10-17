@@ -1,7 +1,7 @@
 import { DivGeral, SubMenuOpen } from "./styles";
 import {  useState } from 'react'
 import { Link } from "react-router-dom";
-import { Produto } from "../../utils/products";
+import { Produto } from "../../services/Interfaces/products";
 
 function SideBarItens () {
     const [menuCad, setMenuCad] = useState<Boolean>(false)

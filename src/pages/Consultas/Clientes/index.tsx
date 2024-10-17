@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { handleClientes } from "../../../api/api";
-import { Cliente } from "../../../utils/cliente";
+import { handleAllClientes } from "../../../services/api/api";
+import { Cliente } from "../../../services/Interfaces/cliente";
 
 import { ContainerContent, TableWrapper, TableHead, TableRow, TableHeader, TableData } from "../Produtos/styles";
 import Layout from "../../../Layout";
@@ -21,7 +21,7 @@ const SearchClientes = () => {
       setIsLoading(true);
       setError(null);
       try{
-        const res = await handleClientes(searchTerm);
+        const res = await handleAllClientes(searchTerm);
         setClientes(res);
         setFilteredResults(res);
       } catch(err) {
