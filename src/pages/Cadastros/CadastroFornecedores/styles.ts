@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const ContainerGrid = styled.div`
     width: 1640px;
     height: 90vh;
@@ -22,7 +21,6 @@ export const FirtMenuCad = styled.div`
     display: flex;
     flex-direction: column;
 
-
     h3 {
         font-size: 2em;
         font-family: Helvetica;
@@ -30,19 +28,16 @@ export const FirtMenuCad = styled.div`
         margin-bottom: 40px;
         margin-top: 20px;
     }
-
     form {
         display: block;
         flew-direction: column;
         width: 500px;
-
         & .name-and-cnpj{
             display: flex;
             flex-direction: row;
             margin-bottom: 20px;
             gap: 20px;
         }
-
         & .email-and-tel{
             display: flex;
             width: 100%;
@@ -54,7 +49,6 @@ export const FirtMenuCad = styled.div`
                 width: 120px;
             }
         }
-
         & .city-and-rua{
             display: flex;
             width: 100%;
@@ -62,7 +56,6 @@ export const FirtMenuCad = styled.div`
             margin: 0 auto;
             justify-content: space-between;
         }
-
         & .cep-and-number{
             display: flex;
             width: 100%;
@@ -75,7 +68,6 @@ export const FirtMenuCad = styled.div`
                 margin-top: 18px;
             }
         }
-
         & .description-and-button{
             display: flex;
             width: 1640px;
@@ -85,13 +77,11 @@ export const FirtMenuCad = styled.div`
             img {
                 width: 200px;
             }
-
             & .button-cad{
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 margin-right: 100px;
-
 
                 & .voltar{
                     background-color: #000;
@@ -103,8 +93,6 @@ export const FirtMenuCad = styled.div`
                 }
             }
         }
-
-
         input{
             width: 440px;
             padding: 8px;
@@ -118,9 +106,6 @@ export const FirtMenuCad = styled.div`
             font-weight: 600;
             font-size: 1em;
         }
-
-
-
         textarea{
             width: 410px;
             height: 16vh;
@@ -129,9 +114,7 @@ export const FirtMenuCad = styled.div`
         }
     }
 }
-
-
-    button {
+      button {
         padding: 8px;
         border: none;
         border-radius: 4px;

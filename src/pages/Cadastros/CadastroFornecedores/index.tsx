@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 import { submitFornecedor } from '../../../services/api/api'
 
@@ -17,16 +17,17 @@ const CadastroFornecedores = () => {
         numero: 0,
         endereco: '',
         cidade: '',
-        estado: ''
+        estado: '',
+        informacoesAdicionais: ''
     })
-    const handleChange = (e: any) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         setFornecedor({
             ...fornecedor,
             [e.target.name]: e.target.value
         })
     }
-    const handleSubmit = async(e: any) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const response = await submitFornecedor(fornecedor)
         if(response){
@@ -150,7 +151,11 @@ const CadastroFornecedores = () => {
                                         </div>
                                     </div>
                                     <div className="description-and-button">
-                                        <textarea placeholder="complemento">Informações adicionais</textarea>
+                                        <textarea 
+                                            name="infomacoesAdicionais" 
+                                            defaultValue="Informações adicionais"  
+                                            placeholder="complemento">
+                                        </textarea>
                                         <div className="button-cad">
                                             <button type="submit">Cadastrar</button>
                                             <Link className="voltar" to="/initialpage">Voltar ao menu</Link>

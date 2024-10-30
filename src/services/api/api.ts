@@ -8,15 +8,15 @@ import { Produto } from "./../Interfaces/products";
     body?: any,
     searchParams?: string
  ) => {
-    const url = `http://localhost:5089/${endpoint}${searchParams ? `?${searchParams}` : ''}`
+    const url = (`http://localhost:5089/${endpoint}${searchParams ? ` ? ${searchParams}` : ''}`)
     try{
         const response =  await fetch(url, {
             method,
             headers: {
                 "Content-Type":" application/json",
             },
-        });
-        
+            body: JSON.stringify(body)
+        });       
         if(!response.ok) {
             throw new Error(`Erro na requisiçao${endpoint}`)
         }
@@ -33,11 +33,8 @@ export const handleLogin = async({nome, senha}: {nome: string; senha: string}) =
 
 // CLIENT REQUESTS IN API
 export const handleAllClientes = async(searcTerm: string): Promise<Cliente[]> => {
-    return apiRequest("Cliente/clientes", "GET", `nome=${searcTerm}`)
-}
-
-export const handleClienteWithId = async(id: string): Promise<Cliente[]> => {
-    return apiRequest("Cliente/${id}", "GET", `name=${id}`)
+    const query = searcTerm ? `? nome=${encodeURIComponent(searcTerm)}` : ""
+    return apiRequest(`Cliente/clientes${query}`, "GET" )
 }
 
 export const submitClient = async(cliente: Cliente): Promise<Cliente> => {
@@ -54,11 +51,12 @@ export const deleteClient = async(id: string):Promise<Cliente> => {
 
 // PRODUCTS REQUESTS IN API 
 export const handleAllProducts = async(searchTerms: string): Promise<Produto[]> =>{
-    return apiRequest("Produtos/produto", "GET", `nome=${searchTerms}`)
+    const query = searchTerms ? `?name=${encodeURIComponent(searchTerms)}` : '';
+    return apiRequest(`Produtos/produto${query}`, "GET")
 }
 
 export const handleProductWithId = async(id: string) => {
-    return apiRequest("Produtos/${id", "GET", `name=${id}`)
+    return apiRequest("Produtos/${id}", "GET", `name=${id}`)
 }
 
 export const updateProductWhitId = async(id: string): Promise<Produto> =>{
@@ -75,12 +73,9 @@ export const submitProduct= async(produto: Produto) =>{
 
 //REQUESTS FORNECEDORES IN API
 export const handleAllFornecedores = async(searchTerms: string) : Promise<Fornecedor[]> =>{
-    return apiRequest("Fornecedor/fornecedores", "GET",  `nome=${searchTerms}`)
+    const  query = searchTerms ? `nome=${encodeURIComponent(searchTerms)}` : ""
+    return apiRequest(`Fornecedor/fornecedores${query}`, "GET")
 }
-export const handleFornecedor = async(id: string): Promise<Fornecedor> =>{
-    return apiRequest("Fornecedor/${id}", "GET", `name=${id}`)
-}
-
 export const submitFornecedor = async(fornecedor: Fornecedor) =>{
     return apiRequest("Fornecedor/cadastrar", "POST", fornecedor)
 }

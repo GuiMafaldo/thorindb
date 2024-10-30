@@ -24,13 +24,13 @@ const App = () => {
                     <Route path="/initialpage" element={<Layout />} /> 
                     {/*  CADASTROS PRODUTOS/ CLIENTES  E ETC.*/}
                     <Route path='/colaboradores' element={<CadColaboradores />} />
-                    <Route path='/cadastrarFornecedor' element={<CadastroFornecedores/>} />
-                    <Route path='/cadastrarCliente' element={<CadastroDeClients />} />
+                    <Route path='/cadastrarFornecedores' element={<CadastroFornecedores/>} />
+                    <Route path='/cadastrarClientes' element={<CadastroDeClients />} />
                     <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />   
                     {/*CONSULTAS CLIENTES PRODUTOS E FORNECEDORES*/}
-                    <Route path='/consultarProdutos' element={<SearchProdutos />} />
-                    <Route path='/buscarClientes' element={<SearchClientes />} />
-                    <Route path='/buscarFornecedor' element={<SearchFornecedores/>} />
+                    <Route path='/produtos' element={<SearchProdutos />} />
+                    <Route path='/clientes' element={<SearchClientes />} />
+                    <Route path='/Fornecedor' element={<SearchFornecedores/>} />
                     <Route path='/vendas' element={<PaginaDeRegistroDeVendas />} /> 
                 </Routes>
             </Router>   

@@ -16,8 +16,7 @@ export const useGetNameUser = () => {
             // Chama a função de login passando userData e password
             const response = await handleLogin({ nome: userData, senha: password });
             
-            if (response && response.success) {
-                console.log(response.userName)
+            if (response && response.userName) {
                 setUserName(response.userName); // Armazena o nome do usuário no estado
             } else {
                 setError("Usuário ou senha inválidos");

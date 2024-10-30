@@ -39,7 +39,7 @@ function SideBarItens () {
                             <SubMenuOpen className="is-open">
                                 <ul>
                                     <li className="list-subMenu">
-                                        <Link className="subMenu" to="/consultarProdutos">Buscar produtos</Link>
+                                        <Link className="subMenu" to="/produtos">Buscar produtos</Link>
                                     </li>
                                     <li className="list-subMenu">
                                         <Link className="subMenu" to="/cadastrarProdutos">Cadastrar produtos</Link>
@@ -57,10 +57,10 @@ function SideBarItens () {
                             <SubMenuOpen>
                             <ul>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/buscarClientes">Buscar clientes</Link>
+                                    <Link className="subMenu" to="/clientes">Buscar clientes</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/cadastrarCliente">Cadastrar clientes</Link>
+                                    <Link className="subMenu" to="/cadastrarClientes">Cadastrar clientes</Link>
                                 </li>
                             </ul>
                         </SubMenuOpen>
@@ -113,10 +113,10 @@ function SideBarItens () {
                             <SubMenuOpen>
                             <ul>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/cadastrarFornecedor">Cadastrar Fornecedor</Link>
+                                    <Link className="subMenu" to="/cadastrarFornecedores">Cadastrar Fornecedor</Link>
                                 </li>
                                 <li className="list-subMenu">
-                                    <Link className="subMenu" to="/buscarFornecedor">Pesquisar Fornecedor</Link>
+                                    <Link className="subMenu" to="/fornecedor">Pesquisar Fornecedor</Link>
                                 </li>
                                 
                             </ul>

@@ -14,12 +14,10 @@ const LoginPage: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-
         try {
-            const response = await handleLogin({ nome: userData, senha: password });
-
-            if (response && response.success) {
-                localStorage.setItem('userName', userData); // Armazena o nome do usuário
+            const response = await handleLogin({ nome: userData, senha: password})
+            if (response) {
+                localStorage.setItem('userName', userData); // Armazena o nome do usuário ao localstorage
                 navigate('/initialpage');
             } else {
                 setError("Credenciais inválidas.");
