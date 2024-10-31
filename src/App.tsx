@@ -10,6 +10,7 @@ import SearchClientes from './pages/Consultas/Clientes';
 import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
 import SearchFornecedores from './pages/Consultas/Fornecedores';
 import PaginaDeRegistroDeVendas from './pages/Vendas';
+import GeraNotaFiscal from './pages/NotaFiscal/GeraNotaFiscal';
 
 const App = () => {
     
@@ -26,7 +27,8 @@ const App = () => {
                     <Route path='/colaboradores' element={<CadColaboradores />} />
                     <Route path='/cadastrarFornecedores' element={<CadastroFornecedores/>} />
                     <Route path='/cadastrarClientes' element={<CadastroDeClients />} />
-                    <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />   
+                    <Route path='/cadastrarProdutos' element={<CadastrarProdutos />} />
+                    <Route path='/notaFiscal' element={<GeraNotaFiscal />} />
                     {/*CONSULTAS CLIENTES PRODUTOS E FORNECEDORES*/}
                     <Route path='/produtos' element={<SearchProdutos />} />
                     <Route path='/clientes' element={<SearchClientes />} />
