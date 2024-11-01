@@ -20,6 +20,7 @@ export const HeaderLogin = styled.div`
         font-family: Helvetica;
         display: flex;
         justify-content: center;
+        margin-top: 20px;
     }
 `
 export const DivContainer = styled.div`
@@ -37,14 +38,17 @@ export const DivContainer = styled.div`
 `
 
 export const DivForm = styled.div`
-    p {
+    a {
         font-size: 12px;
         margin: 0;
         margin-bottom: 26px;
+        color: #000;
+        text-decoration: none;
         
 
         span{
             color: blue;
+            text-decoration: underline;
         }
     }
 
@@ -57,6 +61,7 @@ export const DivForm = styled.div`
         text-decoration: none;
         font-weight: 600;
         border-radius: 6px;
+        margin: 0 auto; 
 `
 
 export const FormLogin = styled.form`

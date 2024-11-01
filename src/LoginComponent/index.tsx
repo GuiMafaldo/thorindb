@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { handleLogin } from "../services/api/api";
+import { handleLogin, resetPassword } from "../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
 
 const LoginPage: React.FC = () => {
-    const [userData, setUserData] = useState("");
-    const [password, setPassword] = useState("");
+    const [userData, setUserData] = useState<String | any>("");
+    const [password, setPassword] = useState<String | any>("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+   
 
     const navigate = useNavigate();
 
@@ -19,16 +20,16 @@ const LoginPage: React.FC = () => {
             if (response) {
                 localStorage.setItem('userName', userData); // Armazena o nome do usuário ao localstorage
                 navigate('/initialpage');
+                
             } else {
-                setError("Credenciais inválidas.");
+                setError("Credenciais inválidas. Tente novamente.");
             }
         } catch (error) {
-            setError("Erro ao autenticar. Tente novamente.");
+            setError(`Erro ao autenticar. Tente novamente. ${error}` );
         } finally {
             setLoading(false);
         }
     };
-
     return (
         <>
             <HeaderLogin>
@@ -57,7 +58,7 @@ const LoginPage: React.FC = () => {
                             {loading ? 'Entrando...' : 'Entrar'}
                         </button>
                     </FormLogin>
-                    <p>Esqueceu sua senha? <span>Clique Aqui</span></p>
+                    <a href="/redefinirSenha">Esqueceu sua senha? <span>Clique Aqui</span></a>
                 </DivForm>
                 <SelectIdioma>
                     <h4>Suport<span>?</span></h4>

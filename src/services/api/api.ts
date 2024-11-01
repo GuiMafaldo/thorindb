@@ -31,6 +31,10 @@ export const handleLogin = async({nome, senha}: {nome: string; senha: string}) =
     return apiRequest("Admin/login", "POST", {nome, senha})
 }
 
+export const resetPassword = async({nome, senha, newSenha, senhaConfirmacao}: {nome: string;senha: string; newSenha: string;senhaConfirmacao: string}) =>{
+    return apiRequest("Admin/resetPassword", "POST", {nome,senha, newSenha, senhaConfirmacao})
+}
+
 // CLIENT REQUESTS IN API
 export const handleAllClientes = async(searcTerm: string): Promise<Cliente[]> => {
     const query = searcTerm ? `? nome=${encodeURIComponent(searcTerm)}` : ""

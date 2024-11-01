@@ -4,16 +4,12 @@ import { submitProduct } from '../../../services/api/api';
 
 import { Button, Container, Form, FormGroup, Input, Label, Title } from './styles';
 import Layout from '../../../Layout';
+import { Produto } from '../../../services/Interfaces/products';
 
 
 
 const CadastrarProduto = () => {
-      const [formato, setFormato] = useState('Simples ou com variação');
-      const [tipo, setTipo] = useState('Produto');
-      const [condicao, setCondicao] = useState('Não Especificado');
-      const [categoria, setCategoria] = useState('Sem categoria');
-
-      const [produto, setProduto] = useState({
+      const [produto, setProduto] = useState<Produto>({
         nome: '',
         preco: 0,
         descricao: '',

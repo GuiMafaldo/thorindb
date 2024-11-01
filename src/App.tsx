@@ -11,6 +11,7 @@ import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
 import SearchFornecedores from './pages/Consultas/Fornecedores';
 import PaginaDeRegistroDeVendas from './pages/Vendas';
 import GeraNotaFiscal from './pages/NotaFiscal/GeraNotaFiscal';
+import RedefinirSenha from './LoginComponent/redefinirSenha';
 
 const App = () => {
     
@@ -20,7 +21,8 @@ const App = () => {
             <Router>
                 <Routes>
                     {/* AREA DE LOGIN */}
-                    <Route path="/" element={<LoginPage />} />       
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path='/redefinirSenha' element={<RedefinirSenha />}/>       
                     {/* PAINEL ADMIN */}
                     <Route path="/initialpage" element={<Layout />} /> 
                     {/*  CADASTROS PRODUTOS/ CLIENTES  E ETC.*/}
