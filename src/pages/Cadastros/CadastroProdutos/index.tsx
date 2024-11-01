@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import { submitProduct } from '../../../services/api/api';
 
@@ -13,30 +13,29 @@ const CadastrarProduto = () => {
       const [condicao, setCondicao] = useState('Não Especificado');
       const [categoria, setCategoria] = useState('Sem categoria');
 
-      const [cadProduto, setCadProduto] = useState({
+      const [produto, setProduto] = useState({
         nome: '',
         preco: 0,
         descricao: '',
-        quantidade: 0
+        quantidade: 0,
+        categoria: ''
       });
     
-      const handleChange = (e: any) => {
+      const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-        setCadProduto({
-          ...cadProduto,
+        setProduto({
+          ...produto,
           [e.target.name]: e.target.value
-        })
-        console.log(cadProduto);
-        // Aqui você pode fazer uma chamada à API para enviar o produto cadastrado
+        })        
       };
 
-      const handleSubmit = async(e: any) => {
+      const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-       const resultado = await submitProduct(cadProduto);
-       if (resultado === 200) {
-            alert("Produto cadastrado com sucesso!");
+       const resultado = await submitProduct(produto);
+       if (resultado) {
+          alert("Produto cadastrado com sucesso!");
         } else {
-            alert("Erro ao cadastrar produto");
+          alert("Erro ao cadastrar produto")
         }
       };
     
@@ -76,6 +75,7 @@ const CadastrarProduto = () => {
                     name='preco'
                     onChange={handleChange}
                     style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '20px' }}
+                    required
                   />
               </FormGroup>
               <div className='group-unit'>
@@ -88,13 +88,14 @@ const CadastrarProduto = () => {
                       name='quantidade'
                       onChange={handleChange}
                       style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
+                      required
                       />
                   </FormGroup>
                   <FormGroup>
                   <Label className='formato'>
                       Formato:
                   </Label>
-                      <select name='formato' value={formato} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '26px', marginTop: '4px' }}>
+                      <select name='formato' style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '26px', marginTop: '4px' }}>
                           <option value="Simples ou com variação">Simples ou com variação</option>
                           <option value="Simples">Simples</option>
                           <option value="Com variação">Com variação</option>
@@ -104,7 +105,7 @@ const CadastrarProduto = () => {
                   <Label className='tipo'>
                       Tipo:
                   </Label>
-                      <select name='tipo' value={tipo} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '34px', marginTop: '4px' }}>
+                      <select name='tipo'  style={{ width: '100%', padding: '8px', marginBottom: '10px', marginLeft: '34px', marginTop: '4px' }}>
                           <option value="Produto">Produto</option>
                           <option value="Serviço">Serviço</option>
                       </select>
@@ -113,7 +114,7 @@ const CadastrarProduto = () => {
                   <Label className='condicao'>
                       Condição:
                   </Label>
-                      <select name='condicao' value={condicao} onChange={handleChange} style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '42px', marginTop: '4px' }}>
+                      <select name='condicao' style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '42px', marginTop: '4px' }}>
                           <option value="Não Especificado">Não Especificado</option>
                           <option value="Novo">Novo</option>
                           <option value="Usado">Usado</option>
@@ -123,27 +124,38 @@ const CadastrarProduto = () => {
               <FormGroup>
                 <Label>
                   Descrição do Produto:
-                  <textarea
-                    name='descricao'
+                  <input 
+                    type='text' 
+                    defaultValue={produto.descricao}
+                    name='descricao' 
                     onChange={handleChange}
                     style={{ width: '100%', padding: '8px', marginBottom: '10px', height: '100px' }}
+                    required
                   />
                 </Label>
               </FormGroup>
               <FormGroup>
                 <Label>
                   Categoria:
-                  <select name='categoria' value={categoria} onChange={handleChange} style={{ width: '100%', padding: '8px', marginBottom: '10px' }}>
-                    <option value="Sem categoria">Sem categoria</option>
-                    <option value="Categoria 1">Categoria 1</option>
-                    <option value="Categoria 2">Categoria 2</option>
-                  </select>
+                  <input 
+                    style={{padding: "8px", marginTop:"16px"}} 
+                    type="text" 
+                    name='categoria' 
+                    required
+                  />
+                  
                 </Label>
               </FormGroup>
               <Button>
                 Avançar
               </Button>
-            <a style={{textDecoration:'none', marginTop:'10px', color:'#000', fontWeight: 'bold'}} href="/initialpage">Voltar</a>
+                <a style={{textDecoration:'none', 
+                            marginTop:'10px', 
+                            color:'#000', 
+                            fontWeight: 'bold'}} 
+                    href="/initialpage">
+                  Voltar
+                </a>
             </Form>
           </Container>         
         </Layout>

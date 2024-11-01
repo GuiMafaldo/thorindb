@@ -183,10 +183,11 @@ export const ButtonGroup = styled.div`
   justify-content: space-between;
 
   a {
-      padding: 10px 15px;
+      padding: 12px 15px;
       border: none;
       border-radius: 4px;
       background-color: #000;
+      height: 38px;
       color: white;
       font-size: 14px;
       cursor: pointer;

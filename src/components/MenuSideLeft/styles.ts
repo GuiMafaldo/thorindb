@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DivGeral = styled.div`
     margin-left: -4px;
     width: 100%;
+    height: 70vh;
 
     > img {
         width: 220px;
@@ -18,7 +19,7 @@ export const DivGeral = styled.div`
     nav {
         background-color: #d9d9d9;
         max-width: 220px;
-        height: 100vh;
+        height: 76vh;
         padding-top: 10px;
         margin-left: 1px;
         

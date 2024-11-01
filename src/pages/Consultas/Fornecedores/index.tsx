@@ -94,7 +94,9 @@ const SearchFornecedores = () => {
                             </tbody>
                     </table>
                 )}
-                <a href="/initialpage">Voltar</a>
+                <a style={{backgroundColor: "#000", width:"80px", color:"#fff", 
+                        padding:"8px", display:"flex", fontFamily:"Helvetica", 
+                        fontWeight:"bold", textDecoration:"none", borderRadius:"4px", justifyContent:"center"}} href="/initialpage">Voltar</a>
                 </TableWrapper>
             </section>
         </Layout>

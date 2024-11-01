@@ -28,6 +28,7 @@ export const ContainerContent = styled.div`
 export const TableWrapper = styled.div`
   width: 1670px;
   display: flex;
+  height: 100vh;
   padding: 20px;
   flex-direction: column;
   margin: 0 auto;
@@ -72,13 +73,14 @@ export const TableWrapper = styled.div`
     font-size: 2.3em;
     font-family: Helvetica;
     text-align: center;
-    margin-bottom: 60px;
-    margin-top: 60px;
+    margin-top: 10px;
   }
 `;
 
 export const Table = styled.table`
   width: 100%
+  max-height: 100vh;
+  overflow-x: hidden;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 1em;
@@ -91,6 +93,7 @@ export const TableHead = styled.thead`
 
 export const TableRow = styled.tr`
   border-bottom: 1px solid #dddddd;
+  
   &:nth-child(even) {
     background-color: #f9f9f9;
   }

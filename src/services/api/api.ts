@@ -37,15 +37,15 @@ export const handleAllClientes = async(searcTerm: string): Promise<Cliente[]> =>
     return apiRequest(`Cliente/clientes${query}`, "GET" )
 }
 
-export const submitClient = async(cliente: Cliente): Promise<Cliente> => {
+export const submitClient = async(cliente: Cliente) => {
     return apiRequest("Cliente/cadastrar", "POST", cliente)
 }
 
-export const updateClient = async(cliente: Cliente): Promise<Cliente> => {
+export const updateClient = async(cliente: Cliente) => {
     return apiRequest("Cliente/${id}", "PUT", cliente)
 }
 
-export const deleteClient = async(id: string):Promise<Cliente> => {
+export const deleteClient = async(id: string) => {
     return apiRequest("Cliente/${id}", "DELETE", `name=${id}`)
 }
 
@@ -59,11 +59,11 @@ export const handleProductWithId = async(id: string) => {
     return apiRequest("Produtos/${id}", "GET", `name=${id}`)
 }
 
-export const updateProductWhitId = async(id: string): Promise<Produto> =>{
+export const updateProductWhitId = async(id: string)=>{
     return apiRequest("Produtos/${id}", "PUT", `name=${id}`)
 }
 
-export const deleteProductWidthId = async(id: string): Promise<Produto> => {
+export const deleteProductWidthId = async(id: string) => {
     return apiRequest("Produtos/${id}", "DELETE", `name=${id}`)
 }
 
@@ -76,6 +76,6 @@ export const handleAllFornecedores = async(searchTerms: string) : Promise<Fornec
     const  query = searchTerms ? `nome=${encodeURIComponent(searchTerms)}` : ""
     return apiRequest(`Fornecedor/fornecedores${query}`, "GET")
 }
-export const submitFornecedor = async(fornecedor: Fornecedor) =>{
+export const submitFornecedor = async(fornecedor: Fornecedor) => {
     return apiRequest("Fornecedor/cadastrar", "POST", fornecedor)
 }

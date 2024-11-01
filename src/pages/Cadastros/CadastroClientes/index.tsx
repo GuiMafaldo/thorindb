@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FormContainer, Title, Form, Label, Input, ButtonGroup, Button } from './styles';
 import Layout from '../../../Layout';
+import { submitClient } from '../../../services/api/api';
 
 
 const CadastroClientes = () => {
   const [cliente, setCliente] = useState({
     nome: '',
-    endereco: '',
     sobrenome: '',
     telefone: '',
     email: '',
@@ -18,14 +18,21 @@ const CadastroClientes = () => {
     cep: '',
   });
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setCliente({ ...cliente, [name]: value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setCliente({ 
+      ...cliente, [e.target.name]: e.target.value 
+    });
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log('Dados do cliente:', cliente);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const res = await submitClient(cliente)
+    if(res) {
+      alert('Cliente cadastrado com sucesso!')
+    } else {
+      alert('Erro ao cadastrar cliente')
+    }
   };
 
   return (
@@ -87,7 +94,7 @@ const CadastroClientes = () => {
                   className='num-input'
                   type="number"
                   name="numero"
-                  value={cliente.email}
+                  value={cliente.numero}
                   onChange={handleChange}
               />
           </div>

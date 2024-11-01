@@ -9,7 +9,6 @@ const {
   searchTerm,
   error,
   isLoading,
-  showResults,
   filteredProducts,
   handleChangeProducts
 } = useProductsArea()
@@ -24,7 +23,7 @@ const {
                     type="text"
                     placeholder="Digite o nome do produto"
                     value={searchTerm}
-                    onChange={handleChangeProducts} // Atualiza o termo de busca
+                    onChange={handleChangeProducts}
                   />
                   <button onClick={() => handleChangeProducts({target:  { value: searchTerm }})}>Buscar</button>
               </div>
@@ -54,13 +53,12 @@ const {
                       {filteredProducts.length > 0 ? (
                       filteredProducts.map((produto) => (
                           <TableRow key={produto.id}>
-                          <TableData>{produto.id}</TableData>
-                          <TableData>{produto.nome}</TableData>
-                          <TableData>R$ {produto.preco.toFixed(2)}</TableData>
-                          <TableData>{produto.quantidade}</TableData>
-              
-                          <TableData>{produto.descricao}</TableData>
-                          
+                            <TableData>{produto.id}</TableData>
+                            <TableData>{produto.nome}</TableData>
+                            <TableData>R$: {produto.preco.toFixed(2)}</TableData>
+                            <TableData>{produto.quantidade}</TableData>
+                            <TableData>{produto.descricao}</TableData>
+                            <TableData>{produto.categoria}</TableData>
                           </TableRow>
                       ))
                       ) : (
