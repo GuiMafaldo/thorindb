@@ -19,7 +19,7 @@ function SideBarItens () {
         pedidoDeVenda: "Pedidos de venda",
         estoque: "Estoque",
         fornecedor: "Fornecedor",
-        vendas: "Vendas realizadas"
+        vendas: "Vendas"
 
     }
     return(

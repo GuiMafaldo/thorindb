@@ -5,6 +5,24 @@ export const HeaderPage = styled.header`
     width: 100%;
     margin: 0 auto;
     padding-bottom: 10px;
+
+    & .image-rotacao-config{
+        transition: transform 0.5s ease;
+        transform: rotate(0deg);
+    }
+
+    & .rotate-config{
+        transform: rotate(90deg);
+    }
+
+    & .image-rotacao-sup{
+        transition: transform 0.5s ease;
+        transform: rotate(0deg);
+    }
+
+    & .rotate-sup{
+        transform: rotate(90deg);
+    }
     
 `
 

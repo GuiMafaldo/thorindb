@@ -32,8 +32,6 @@ const RedefinirSenha = () => {
             }
 
         }
-
-
     return(
         <div style={{display: "flex", 
                     flexDirection: "column", 
