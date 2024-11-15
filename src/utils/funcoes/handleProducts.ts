@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Produto } from "../services/Interfaces/products";
-import { handleAllProducts } from "../services/api/api";
+import { Produto } from "../../services/Interfaces/products";
+import { handleAllProducts } from "../../services/api/api";
 
 export const useProductsArea = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");

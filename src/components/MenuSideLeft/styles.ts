@@ -7,6 +7,9 @@ export const DivGeral = styled.div`
 
     > img {
         width: 220px;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+        mix-blend-mode: color-burn;
     }
    
 
@@ -32,33 +35,16 @@ export const DivGeral = styled.div`
                 list-style: none;
                 margin-bottom: 8px;
                 cursor: pointer;
-                
-                a {
-                    text-decoration: none;
-                    color: #000;
-                    font-family: sans-serif;
-                    margin-top: 10px;
-                }
             }
         }
     }
-
-    img {
-        margin-bottom:-4px;
-    }
 `
 export const SubMenuOpen = styled.div`
-
-
     & .list-subMenu {
         text-decoration: underline;
-        color: blue;
+        color: #000;
         font-weight: 500;
         font-family: Helvetica;
         margin-top: 8px;
-
-        & .subMenu {
-            color: blue;
-        }
     }
 `

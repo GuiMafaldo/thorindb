@@ -145,8 +145,7 @@ const CadastroClientes = () => {
           </ButtonGroup>
         </Form>
       </FormContainer>
-    </Layout>
-    
+    </Layout> 
   );
 };
 

@@ -9,7 +9,6 @@ import SearchProdutos from './pages/Consultas/Produtos';
 import SearchClientes from './pages/Consultas/Clientes';
 import CadastroFornecedores from './pages/Cadastros/CadastroFornecedores';
 import SearchFornecedores from './pages/Consultas/Fornecedores';
-import PaginaDeRegistroDeVendas from './pages/Vendas';
 import GeraNotaFiscal from './pages/NotaFiscal/GeraNotaFiscal';
 import RedefinirSenha from './LoginComponent/redefinirSenha';
 
@@ -35,7 +34,6 @@ const App = () => {
                     <Route path='/produtos' element={<SearchProdutos />} />
                     <Route path='/clientes' element={<SearchClientes />} />
                     <Route path='/Fornecedor' element={<SearchFornecedores/>} />
-                    <Route path='/vendas' element={<PaginaDeRegistroDeVendas />} /> 
                 </Routes>
             </Router>   
         </>

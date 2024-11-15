@@ -1,8 +1,7 @@
-import { useProductsArea } from '../../../utils/handleProducts'
+import { useProductsArea } from '../../../utils/funcoes/handleProducts'
 
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
 import Layout from "../../../Layout";
-
 
 const SearchProdutos =  () => {
 const {
@@ -55,7 +54,7 @@ const {
                           <TableRow key={produto.id}>
                             <TableData>{produto.id}</TableData>
                             <TableData>{produto.nome}</TableData>
-                            <TableData>R$: {produto.preco.toFixed(2)}</TableData>
+                            <TableData>R$: {produto.preco.toFixed(4)}</TableData>
                             <TableData>{produto.quantidade}</TableData>
                             <TableData>{produto.descricao}</TableData>
                             <TableData>{produto.categoria}</TableData>
@@ -72,9 +71,7 @@ const {
               <a href="/initialpage">Voltar</a>
               </TableWrapper>
       </ContainerContent>
-    </Layout>
-    
+    </Layout>  
   );
 };
-
 export default SearchProdutos;

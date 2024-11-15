@@ -6,8 +6,6 @@ import { submitFornecedor } from '../../../services/api/api'
 import { ContainerGrid, ContentForm, FirtMenuCad} from "./styles"
 import Layout from "../../../Layout"
 
-
-
 const CadastroFornecedores = () => {
     const [fornecedor, setFornecedor] = useState({
         name: '',
@@ -166,8 +164,6 @@ const CadastroFornecedores = () => {
                         </ContentForm>
                 </FirtMenuCad>
             </ContainerGrid>
-       </Layout>
-        
-    )
-}
+       </Layout>       
+)}
 export default CadastroFornecedores

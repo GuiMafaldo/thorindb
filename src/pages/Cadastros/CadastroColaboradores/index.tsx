@@ -4,11 +4,10 @@ import Layout from '../../../Layout'
 
 
 const CadColaboradores = () => {
-    return(
-       
+    return(  
             <Layout>
                 <ContainerGeral>
-                <ContainerForm>
+                    <ContainerForm>
                         <Colaboradores>
                             <div className="title-and-back">
                                 <h3>Cadastro de Colaboradores</h3>
@@ -48,8 +47,7 @@ const CadColaboradores = () => {
                         </Colaboradores>
                 </ContainerForm>
             </ContainerGeral>
-            </Layout>
-        
+        </Layout>       
     )
 }
 

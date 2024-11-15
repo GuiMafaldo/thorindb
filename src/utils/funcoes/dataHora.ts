@@ -19,8 +19,5 @@ export const useDataHora = (): string => {
     const segundos = dataHora.getSeconds();
     const dataHoraFormatada = `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
    
-    return dataHoraFormatada;
-
-
-    
+    return dataHoraFormatada;    
 }

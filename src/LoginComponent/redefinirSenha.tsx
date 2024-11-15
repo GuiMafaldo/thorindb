@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import { resetPassword } from "../services/api/api";
 import { ResetPassword } from "../services/Interfaces/resetPassword";
-import { resolveSoa } from "dns";
-
 
 
 const RedefinirSenha = () => {

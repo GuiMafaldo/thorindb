@@ -1,4 +1,4 @@
-import  React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { TableWrapper, TableHead, TableRow, TableHeader, TableData } from '../Produtos/styles'
 import { Fornecedor } from '../../../services/Interfaces/fornecedor'
 import { handleAllFornecedores } from '../../../services/api/api'
@@ -30,7 +30,6 @@ const SearchFornecedores = () => {
     useEffect(() => {
         handleFornecedor()
     }, [])
-
 
     useEffect(() => {
         if(searchTerm) {
@@ -99,9 +98,7 @@ const SearchFornecedores = () => {
                         fontWeight:"bold", textDecoration:"none", borderRadius:"4px", justifyContent:"center"}} href="/initialpage">Voltar</a>
                 </TableWrapper>
             </section>
-        </Layout>
-        
+        </Layout>       
     )
 }
-
- export default SearchFornecedores
+export default SearchFornecedores

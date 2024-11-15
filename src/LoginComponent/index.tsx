@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { handleLogin, resetPassword } from "../services/api/api";
+import { handleLogin } from "../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
+import globo from '../assets/image/iconeGlobo.png'
 
 const LoginPage: React.FC = () => {
-    const [userData, setUserData] = useState<String | any>("");
-    const [password, setPassword] = useState<String | any>("");
+    const [userData, setUserData] = useState<string | any>("");
+    const [password, setPassword] = useState<string | any>("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-   
 
     const navigate = useNavigate();
 
@@ -16,16 +16,15 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await handleLogin({ nome: userData, senha: password})
-            if (response) {
-                localStorage.setItem('userName', userData); // Armazena o nome do usuário ao localstorage
+            const response = await handleLogin({ nome: userData, senha: password });
+            if (response && response.success) {
+                localStorage.setItem('userName', userData); // Use userData.nome
                 navigate('/initialpage');
-                
             } else {
                 setError("Credenciais inválidas. Tente novamente.");
             }
         } catch (error) {
-            setError(`Erro ao autenticar. Tente novamente. ${error}` );
+            setError(`Erro ao autenticar. Tente novamente. ${error}`);
         } finally {
             setLoading(false);
         }
@@ -66,7 +65,7 @@ const LoginPage: React.FC = () => {
                         <option value="pt-br">Português</option>
                         <option value="en">Inglês</option>
                     </select>
-                    <img src="/image/iconeGlobo.png" alt="logo" />
+                    <img src={globo} alt="logo" />
                 </SelectIdioma>
             </DivContainer>
         </>

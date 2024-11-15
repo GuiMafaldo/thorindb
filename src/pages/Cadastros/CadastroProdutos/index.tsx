@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 import { submitProduct } from '../../../services/api/api';
 
@@ -138,8 +138,7 @@ const CadastrarProduto = () => {
                     type="text" 
                     name='categoria' 
                     required
-                  />
-                  
+                  />           
                 </Label>
               </FormGroup>
               <Button>
@@ -154,8 +153,7 @@ const CadastrarProduto = () => {
                 </a>
             </Form>
           </Container>         
-        </Layout>
-       
+       </Layout>      
       );
     };
 export default CadastrarProduto

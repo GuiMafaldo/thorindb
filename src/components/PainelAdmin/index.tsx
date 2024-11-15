@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useProductsArea } from "../../utils/handleProducts";
+import { useProductsArea } from "../../utils/funcoes/handleProducts";
 import { Content, Column, QuickDraft, TextArea, Container, Header, Title, Button, Input } from "./styles";
 
 
+
 const PainelAdmin = () => {
-  const [lembretes, setLembretes] = useState<String | any>(localStorage.getItem('lembretes') || '');
+  const [lembretes, setLembretes] = useState<string | any>(localStorage.getItem('lembretes') || '');
   const getUserName = localStorage.getItem('userName');
  
   const 
-    {
-      searchTerm, 
+    { 
       isLoading, 
       filteredProducts,
       error
@@ -19,8 +19,7 @@ const PainelAdmin = () => {
      setLembretes(lembretes);
     }
 
-  return (
-          
+  return (   
             <Container>
                 <Header>
                   <h1>Painel Administrador</h1>
@@ -28,14 +27,12 @@ const PainelAdmin = () => {
                     <p>Opções de tela</p> | <p>Ajuda</p>
                   </div>
                 </Header>
-
                 <Content>
                   <Column>
                     <Title>Bem-vindo(a) {getUserName}!</Title>
                     <p>Nós Preparamos algumas Tarefas Rapidas para começar:</p>
                     <Button>Ver Mais...</Button>
-                  </Column>
-
+                 </Column>
                   <Column>
                     <Title>Check up</Title>
                     <ul>
@@ -47,8 +44,7 @@ const PainelAdmin = () => {
                       </div>
                     </ul>
                   </Column>
-
-                  <Column>
+                  <Column style={{width: "200px"}}>
                     <Title>Mais ações</Title>
                     <ul>
                       <div className="list-subMenu">
@@ -62,21 +58,15 @@ const PainelAdmin = () => {
                 </Content>
                 <Content>
                   <Column style={{ maxWidth: "435px"}}>
-                    <Title style={{ display: "flex", justifyContent:"left"}}>Lista de Produtos a Repor</Title>
-                    <th style={{borderCollapse:"collapse", 
-                                              border:"1px solid black", 
-                                              padding:"10px", 
-                                              display:" flex", 
-                                              justifyContent:"space-between", 
-                                              width:"400px",
-                                              backgroundColor: "#000",
-                                              borderRadius:"5px",
-                                              color:"#fff",
-                                              }}>
-                            <td style={{fontFamily:'Helvetica', fontWeight:"600"}}>ID</td>
-                            <td style={{fontFamily:'Helvetica', fontWeight:"600"}}>Nome</td>
-                            <td style={{fontFamily:'Helvetica', fontWeight:"600"}}>Quant</td>
-                      </th>
+                  <table style={{ borderCollapse: "collapse", border: "1px solid black", width: "400px" }}>
+                      <thead>
+                        <tr style={{ backgroundColor: "#000", color: "#fff", borderRadius: "5px" }}>
+                          <th style={{ fontFamily: "Helvetica", fontWeight: "600" }}>ID</th>
+                          <th style={{ fontFamily: "Helvetica", fontWeight: "600" }}>Nome</th>
+                          <th style={{ fontFamily: "Helvetica", fontWeight: "600" }}>Quant</th>
+                        </tr>
+                      </thead>
+                    </table>
                     {isLoading ? (
                       <p>Sem informações ainda...</p>
                       ) : 
@@ -84,17 +74,17 @@ const PainelAdmin = () => {
                     )}
                     {filteredProducts.length > 0?(
                       filteredProducts.map((product) => (
-                        <table style={{borderCollapse: "collapse", border: "1px solid black", padding: "10px", width: "400px"}} key={product.id}>                         
-                          {product.quantidade  <= 5? (
-                                <div>   
-                                  <tr style={{display:"flex", justifyContent:"space-between", width:"360px", borderRadius:"5px", color:"#000", padding:"4px"}}>
-                                    <td style={{listStyleType:"none", fontWeight:"bold", fontFamily:"Helvetica"}}>{product.id}</td>
-                                    <td style={{listStyleType:"none", fontWeight:"bold", fontFamily:"Helvetica"}}>{product.nome}</td>
-                                    <td style={{listStyleType:"none", fontWeight:"bold", fontFamily:"Helvetica"}}>{product.quantidade}</td>
-                                  </tr>
-                                </div>
-                          ): ("")}
-                        </table>
+                        <table style={{ borderCollapse: "collapse", border: "1px solid black", padding: "10px", width: "400px" }} key={product.id}>
+                            <tbody>
+                              {product.quantidade <= 5 && (
+                                <tr style={{ display: "flex", justifyContent: "space-between", width: "360px", borderRadius: "5px", color: "#000", padding: "4px" }}>
+                                  <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.id}</td>
+                                  <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.nome}</td>
+                                  <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.quantidade}</td>
+                                </tr>
+                              )}
+                            </tbody>
+                          </table>
                       ))) : (<p>Nenhum produto encontrado</p> )}
                   </Column>
                   <Column style={{ maxWidth: "600px"}}>
@@ -106,11 +96,7 @@ const PainelAdmin = () => {
                     </QuickDraft>
                   </Column>
                 </Content>
-            </Container>
-         
-
-       
+            </Container>   
   );
 };
-
 export default PainelAdmin;

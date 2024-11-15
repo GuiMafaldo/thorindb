@@ -14,7 +14,6 @@ const SearchClientes = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
- 
   
     // Função para buscar clientes ou produtos com base no tipo de busca
     const fetchClientes= async () => {
@@ -100,9 +99,6 @@ const SearchClientes = () => {
               <a href="/initialpage">Voltar</a>
               </TableWrapper>
         </ContainerContent>
-      </Layout>
-      
-    )
-}
-
+      </Layout>     
+)}
 export default SearchClientes
