@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { TableWrapper, TableHead, TableRow, TableHeader, TableData } from '../Produtos/styles'
-import { Fornecedor } from '../../../services/Interfaces/fornecedor'
+import { TableWrapper, TableHead, TableRow, TableHeader, TableData } from '../../Produtos/Consulta/styles'
+import { Fornecedor } from '../../../utils/Interfaces/fornecedor'
 import { handleAllFornecedores } from '../../../services/api/api'
 import Layout from '../../../Layout'
 

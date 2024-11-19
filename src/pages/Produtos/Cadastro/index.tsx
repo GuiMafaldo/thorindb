@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { submitProduct } from '../../../services/api/api';
 
 import { Button, Container, Form, FormGroup, Input, Label, Title } from './styles';
-import Layout from '../../../Layout';
-import { Produto } from '../../../services/Interfaces/products';
+
+import { Produto } from '../../../utils/Interfaces/products';
 
 
 
@@ -36,7 +36,6 @@ const CadastrarProduto = () => {
       };
     
       return (
-        <Layout>
           <Container>
             <Title>Cadastro de Produtos</Title>
             <Form onSubmit={handleSubmit}>
@@ -148,12 +147,11 @@ const CadastrarProduto = () => {
                             marginTop:'10px', 
                             color:'#000', 
                             fontWeight: 'bold'}} 
-                    href="/initialpage">
+                    href="/dashBoard">
                   Voltar
                 </a>
             </Form>
-          </Container>         
-       </Layout>      
+          </Container>               
       );
     };
 export default CadastrarProduto

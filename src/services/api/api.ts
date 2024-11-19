@@ -1,6 +1,8 @@
-import { Cliente } from "./../Interfaces/cliente";
-import { Fornecedor } from "./../Interfaces/fornecedor";
-import { Produto } from "./../Interfaces/products";
+import { Colaborador } from "../../utils/Interfaces/colaborador";
+import { Cliente } from "../../utils/Interfaces/cliente";
+import { Fornecedor } from "../../utils/Interfaces/fornecedor";
+import { Produto } from "../../utils/Interfaces/products";
+import { baseUrl } from "../db/conectiondb";
 
  export const apiRequest = async (
     endpoint: string,
@@ -8,7 +10,7 @@ import { Produto } from "./../Interfaces/products";
     body?: any,
     searchParams?: string
  ) => {
-    const url = (`http://localhost:5089/${endpoint}${searchParams ? ` ? ${searchParams}` : ''}`)
+    const url = (`${baseUrl}${endpoint}${searchParams ? ` ? ${searchParams}` : ''}`)
     try{
         const response =  await fetch(url, {
             method,
@@ -30,10 +32,24 @@ import { Produto } from "./../Interfaces/products";
 export const handleLogin = async({nome, senha}: {nome: string; senha: string}) =>{
     return apiRequest("Admin/login", "POST", {nome, senha})
 }
-
 export const resetPassword = async({nome, senha, newSenha, senhaConfirmacao}: {nome: string;senha: string; newSenha: string;senhaConfirmacao: string}) =>{
     return apiRequest("Admin/resetPassword", "POST", {nome,senha, newSenha, senhaConfirmacao})
 }
+
+// CADASTRO DE COLABORADORES ENDPOINTS
+export const cadastrarColaborador = async(colaborador: Colaborador) => {
+    return apiRequest("Colaborador/cadastrar", "POST", colaborador)
+}
+export const handleColaboradorWithId = async(id: string) => {
+    return apiRequest("Colaborador/${id}", "GET", `name=${id}`)
+}
+export const atualizarColaborador = async({id, password, newPassword}: {id: string, password: string, newPassword: string}) => {
+    return apiRequest("Colaborador/${id}", "PUT", {id, password, newPassword})
+}
+export const deletarColaborador = async(id: string) => {
+    return apiRequest("Colaborador/${id}", "DELETE", `name=${id}`)
+}
+
 
 // CLIENT REQUESTS IN API
 export const handleAllClientes = async(searcTerm: string): Promise<Cliente[]> => {
@@ -63,7 +79,7 @@ export const handleProductWithId = async(id: string) => {
     return apiRequest("Produtos/${id}", "GET", `name=${id}`)
 }
 
-export const updateProductWhitId = async(id: string)=>{
+export const updateProductWhitId = async(id: string, updatedData: Partial<Produto>) =>{
     return apiRequest("Produtos/${id}", "PUT", `name=${id}`)
 }
 

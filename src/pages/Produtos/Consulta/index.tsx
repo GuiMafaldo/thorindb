@@ -1,4 +1,5 @@
 import { useProductsArea } from '../../../utils/funcoes/handleProducts'
+import { Link } from 'react-router-dom'
 
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
 import Layout from "../../../Layout";
@@ -13,10 +14,9 @@ const {
 } = useProductsArea()
 
   return (
-    <Layout>
       <ContainerContent>
           <TableWrapper>
-              <h1>Consultar produtos</h1>
+            <h1>Consultar produtos</h1>
               <div>
                   <input
                     type="text"
@@ -68,10 +68,9 @@ const {
                   </tbody>
                   </table>
               )}
-              <a href="/initialpage">Voltar</a>
+              <a href="/dashBoard">Voltar</a>
               </TableWrapper>
-      </ContainerContent>
-    </Layout>  
+      </ContainerContent> 
   );
 };
 export default SearchProdutos;

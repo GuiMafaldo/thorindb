@@ -7,7 +7,7 @@ width: 1640px;
 height: 80vh;
 margin: 0 auto;
 margin-top: 120px;
-margin-left: -320px;
+
   padding: 60px;
   border: 1px solid #e3e3e3;
   border-radius: 8px;

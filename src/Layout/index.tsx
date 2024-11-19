@@ -2,7 +2,7 @@ import SideBarItens from "../components/MenuSideLeft";
 import InitialPage from "../components/Header";
 import { ContainerPageCentral } from "./styles";
 import PainelAdmin from "../components/PainelAdmin";
-import { LayoutProps } from "../services/Interfaces/layout";
+import { LayoutProps } from "../utils/Interfaces/layout";
 
 const Layout = ({ children }: LayoutProps) => {
     let defaultContent = <PainelAdmin />

@@ -57,8 +57,8 @@ const PainelAdmin = () => {
                   </Column>
                 </Content>
                 <Content>
-                  <Column style={{ maxWidth: "435px"}}>
-                  <table style={{ borderCollapse: "collapse", border: "1px solid black", width: "400px" }}>
+                  <Column style={{ maxWidth: "445px"}}>
+                  <table style={{ borderCollapse: "collapse", border: "1px solid black", width: "400px"  }}>
                       <thead>
                         <tr style={{ backgroundColor: "#000", color: "#fff", borderRadius: "5px" }}>
                           <th style={{ fontFamily: "Helvetica", fontWeight: "600" }}>ID</th>
@@ -74,10 +74,10 @@ const PainelAdmin = () => {
                     )}
                     {filteredProducts.length > 0?(
                       filteredProducts.map((product) => (
-                        <table style={{ borderCollapse: "collapse", border: "1px solid black", padding: "10px", width: "400px" }} key={product.id}>
+                        <table style={{ borderCollapse: "collapse", border: "1px solid black", padding: "6px", width: "400px" }} key={product.id}>
                             <tbody>
                               {product.quantidade <= 5 && (
-                                <tr style={{ display: "flex", justifyContent: "space-between", width: "360px", borderRadius: "5px", color: "#000", padding: "4px" }}>
+                                <tr style={{ display: "flex", alignContent: 'flex-start', justifyContent: "space-between", width: "320px", borderRadius: "5px", color: "#000", padding: "8px" }}>
                                   <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.id}</td>
                                   <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.nome}</td>
                                   <td style={{ listStyleType: "none", fontWeight: "bold", fontFamily: "Helvetica" }}>{product.quantidade}</td>

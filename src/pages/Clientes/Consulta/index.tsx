@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import { handleAllClientes } from "../../../services/api/api";
-import { Cliente } from "../../../services/Interfaces/cliente";
+import { Cliente } from "../../../utils/Interfaces/cliente";
 
-import { ContainerContent, TableWrapper, TableHead, TableRow, TableHeader, TableData } from "../Produtos/styles";
+import { ContainerContent, TableWrapper, TableHead, TableRow, TableHeader, TableData } from "../../Produtos/Consulta/styles";
 import Layout from "../../../Layout";
 
 

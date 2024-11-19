@@ -7,7 +7,7 @@ export const ContainerContent = styled.div`
     padding: 0;
     padding-bottom: 20px;
     background: linear-gradient(to right, #e3e3e3, #f9f9f9);
-        
+    margin-top: 100px;    
 
         a {
             display: flex;
@@ -67,14 +67,16 @@ export const TableWrapper = styled.div`
                 cursor: pointer;
                 font-family: Helvetica;
             }
-  }
+      }
 
-  h1 {
-    font-size: 2.3em;
-    font-family: Helvetica;
-    text-align: center;
-    margin-top: 10px;
-  }
+      h1 {
+        font-size: 2.3em;
+        font-family: Helvetica;
+        text-align: center;
+        margin-top: 20px;
+     }
+
+ 
 `;
 
 export const Table = styled.table`

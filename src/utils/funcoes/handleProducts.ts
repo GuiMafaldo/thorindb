@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Produto } from "../../services/Interfaces/products";
-import { handleAllProducts } from "../../services/api/api";
+import { Produto } from "../Interfaces/products";
+import { handleAllProducts, updateProductWhitId } from "../../services/api/api";
 
 export const useProductsArea = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -38,6 +38,29 @@ export const useProductsArea = () => {
     setShowResults(true); // Exibe os resultados após a busca
   };
 
+  // ATUALIZAR PRODUTO 
+  const updateProductDetails = async (id: string, updatedData: Partial<Produto>) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const updatedProduct = await updateProductWhitId(id, updatedData); 
+      setProducts((prevProducts) =>
+        prevProducts.map((product) =>
+          product.id === id ? { ...product, ...updatedProduct } : product
+        )
+      );
+      setFilteredProducts((prevFiltered) =>
+        prevFiltered.map((product) =>
+          product.id === id ? { ...product, ...updatedProduct } : product
+        )
+      );
+    } catch (err) {
+      setError("Erro ao atualizar produto");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSearchProducts = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     filterProducts(searchTerm);
@@ -60,6 +83,7 @@ export const useProductsArea = () => {
     isLoading,
     showResults,
     filteredProducts, 
-    handleChangeProducts
+    handleChangeProducts,
+    updateProductDetails
   };
 };

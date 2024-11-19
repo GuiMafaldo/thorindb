@@ -1,31 +1,43 @@
+import { link } from "fs"
+
 const menuData = [
   {
     title: "DashBoard",
-    actions: ["Novidades", "Estoque", "Vendas", "Compras"]
+    actions: ["Novidades", "Estoque", "Vendas", "Compras"],
+    links: ["/dashboard", "/estoque", "/vendas", "/compras"]
   },  
   {
       title: "Colaboradores",
       actions: ["Cadastrar colaborador", "Atualizar colaborador", "Deletar colaborador"],
+      links: ["/cadastroColaborador", "/atualizarColaborador", "/deletarColaborador"],
+      
     },
     {
       title: "Clientes",
-      actions: ["Cadastrar cliente", "Atualizar cliente", "Deletar cliente"],
+      actions: ["Consultar clientes"],
+      links: ["/cliente"],
+      
     },
     {
       title: "Fornecedores",
-      actions: ["Cadastrar fornecedor", "Atualizar fornecedor", "Deletar fornecedor"],
+      actions: ["Consultar fornecedores"],
+      links: ["/fornecedor"]
+      
     },
     {
       title: "Produtos",
-      actions: ["Cadastrar produto", "Atualizar produto", "Deletar produto"],
+      actions: ["Consultar produtos"],
+      links: ["/produtos"]
     },
     {
       title: "Pedidos",
-      actions: ["Consultar pedidos", "Consultar Status", "Consultar Envio"]
+      actions: ["Consultar pedidos", "Consultar Status", "Consultar Envio"],
+      links: ["/pedidos", "/statusPedido", "/envioPedido"]
     },
     {
       title: "Relatorios",
-      actions: ["Relatorio de Vendas", "Relatorio Financeiro", "Relatorio de estoque", "Relatorio de clientes"]
+      actions: ["Relatorio de Vendas", "Relatorio Financeiro", "Relatorio de estoque", "Relatorio de clientes"],
+      links: ["/relatorioVendas", "/relatorioFinanceiro", "/relatorioEstoque", "/relatorioClientes"]
     }
 ]
 export default menuData
