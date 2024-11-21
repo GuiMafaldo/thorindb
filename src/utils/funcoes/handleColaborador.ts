@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { handleColaboradorWithId } from "../../services/api/api";
+import { getAllColaborador, handleColaboradorWithId } from "../../services/api/api";
 import { Colaborador } from "../Interfaces/colaborador";
 
 export const useColaboradorArea = () => {
@@ -10,17 +10,17 @@ export const useColaboradorArea = () => {
   const [colaborador, setColaborador] = useState<Colaborador[]>([]);
   const [filteredColaborador, setFilteredColaborador] = useState<Colaborador[]>([]);
 
-  // Função para buscar produtos no banco de dados
+  // Função para buscar colaboradores no banco de dados
   const searchColaborador = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await handleColaboradorWithId(searchTerm);
+      const res = await getAllColaborador(searchTerm);
       setColaborador(res);
       setFilteredColaborador(res); // Inicialmente, a lista filtrada está vazia
       setShowResults(true); // Não exibe resultados até que a busca seja realizada
     } catch (err) {
-      setError("Erro ao buscar produtos");
+      setError("Erro ao buscar colaboradores");
     } finally {
       setIsLoading(false);
     }
@@ -28,7 +28,7 @@ export const useColaboradorArea = () => {
 
   const filterColaborador = (term: string) => {
     if (term.trim() === "") {
-      setFilteredColaborador(colaborador); // Não mostra nenhum produto quando o termo está vazio
+      setFilteredColaborador(colaborador); // Não mostra nenhum colaborador quando o termo está vazio
     } else {
       const filtered = colaborador.filter((index) =>
         index.nome.toLowerCase().includes(term.toLowerCase())
@@ -38,7 +38,7 @@ export const useColaboradorArea = () => {
     setShowResults(true); // Exibe os resultados após a busca
   };
 
-  const handleSearchProducts = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearchColaborador = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     filterColaborador(searchTerm);
   };
@@ -60,6 +60,7 @@ export const useColaboradorArea = () => {
     isLoading,
     showResults,
     filteredColaborador, 
+    getAllColaborador,
     handleChangeColaborador
   };
 };

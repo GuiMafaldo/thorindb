@@ -7,7 +7,7 @@ export const ContainerGeral = styled.div`
   margin: 0 auto;
   margin-top: 100px;
   margin-left: 200px;
-  height: 75vh;
+  height: 40vh;
 `;
 
 export const ContainerForm = styled.div`
@@ -41,7 +41,7 @@ export const Colaboradores = styled.section`
     a {
       font-size: 14px;
       text-decoration: none;
-      color: #007bff;
+      color: #000;
       font-weight: bold;
       cursor: pointer;
       transition: color 0.3s ease;
@@ -58,6 +58,7 @@ export const FormDisplay = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 30vh;
 
   form {
     display: flex;
@@ -98,11 +99,12 @@ export const FormDisplay = styled.div`
 
   button {
     width: 100%;
-    max-width: 400px;
+    max-width: 180px;
     padding: 10px;
     border-radius: 8px;
     border: none;
-    background-color: #007bff;
+    background-color: #000;
+    margin-top: 10px;
     color: white;
     font-size: 16px;
     font-weight: bold;

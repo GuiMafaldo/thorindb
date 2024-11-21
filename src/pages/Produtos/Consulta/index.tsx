@@ -1,8 +1,7 @@
 import { useProductsArea } from '../../../utils/funcoes/handleProducts'
-import { Link } from 'react-router-dom'
 
 import { ContainerContent, TableData, TableHead, TableHeader, TableRow, TableWrapper } from "./styles";
-import Layout from "../../../Layout";
+
 
 const SearchProdutos =  () => {
 const {
@@ -26,7 +25,6 @@ const {
                   />
                   <button onClick={() => handleChangeProducts({target:  { value: searchTerm }})}>Buscar</button>
               </div>
-
               {isLoading ? (
                   <p>Carregando...</p>
               ) : error ? (

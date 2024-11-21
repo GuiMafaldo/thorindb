@@ -8,8 +8,8 @@ const menuData = [
   },  
   {
       title: "Colaboradores",
-      actions: ["Cadastrar colaborador", "Atualizar colaborador", "Deletar colaborador"],
-      links: ["/cadastroColaborador", "/atualizarColaborador", "/deletarColaborador"],
+      actions: ["Gerenciar Info"],
+      links: ["/colaborador"],
       
     },
     {
@@ -20,13 +20,13 @@ const menuData = [
     },
     {
       title: "Fornecedores",
-      actions: ["Consultar fornecedores"],
+      actions: ["Geenciar Info"],
       links: ["/fornecedor"]
       
     },
     {
       title: "Produtos",
-      actions: ["Consultar produtos"],
+      actions: ["Gerenciar Info"],
       links: ["/produtos"]
     },
     {

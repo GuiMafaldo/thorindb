@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Colaboradores, ContainerForm, ContainerGeral, FormDisplay } from "./styles"
-import Layout from '../../../Layout'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Colaborador } from '../../../utils/Interfaces/colaborador'
 import { cadastrarColaborador } from '../../../services/api/api'
 
@@ -9,10 +8,15 @@ import { cadastrarColaborador } from '../../../services/api/api'
 const CadastroColaboradores = () => {
     const [colaborador, setColaborador] = useState<Colaborador>({
         nome: '',
+        telefone: '',
         email: '',
-        telefone: 0,
+        numero: 0,
         username: '',
-        password: ''
+        password: '',
+        rg: '',
+        cpf: '',
+        cargo: '',
+        dataNascimento: new Date()
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,97 +28,165 @@ const CadastroColaboradores = () => {
     }
 
         const clickSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-            e.preventDefault();
+            e.preventDefault()
             const resultado = await cadastrarColaborador(colaborador);
             if (resultado) {
                 alert("Colaborador cadastrado com sucesso!");
+                setColaborador({
+                    nome: '',
+                    telefone: '',
+                    email: '',
+                    numero: 0,
+                    username: '',
+                    password: '',
+                    rg: '',
+                    cpf: '',
+                    cargo: '',
+                    dataNascimento: new Date()
+                });
             } else {
                 alert("Erro ao cadastrar colaborador")
             }
         }
-
     return(  
-            <Layout>
+            <>
                 <ContainerGeral>
                     <ContainerForm>
                         <Colaboradores>
                             <div className="title-and-back">
-                                <h3>Cadastro de Colaboradores</h3>
-                                <Link to="/dashBoard">Voltar ao menu</Link>
+                                <h3 style={{marginLeft: 80}}>Dados do Colaboradores</h3>
+                                <Link to="/dashboard">Voltar ao menu</Link>
                             </div>
                             <FormDisplay>
-                                <form onSubmit={clickSubmit}>
-                                    <div className="numbers-type">
-                                        <label htmlFor="id-colaborador">Id:</label>
-                                        <input 
-                                            name='id'
-                                            onChange={handleChange}
-                                            className="num-type" 
-                                            type="text" 
-                                            id="id-colaborador" 
-                                        />
+                                <form onSubmit={clickSubmit} style={{position: "relative"}}>
+                                    <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", height: "5vh", marginLeft: -600}}>
+                                        <div>
+                                            <input 
+                                                style={{width: 270, marginLeft: -4}}
+                                                placeholder='Nome'  
+                                                name='nome'
+                                                onChange={handleChange}
+                                                required
+                                                type="text" 
+                                                id="name-colaborador" 
+                                            />
+                                        </div>
+                                        <div className="numbers-type">
+                                            <input 
+                                                placeholder='(xx) 99999-9999'
+                                                name='telefone'
+                                                onChange={handleChange}
+                                                required
+                                                className="num-type-tel" 
+                                                type="number" 
+                                                id="tel-colaborador" 
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label htmlFor="name-colaborador">Nome:</label>
-                                        <input 
-                                            name='nome'
-                                            onChange={handleChange}
-                                            required
-                                            type="text" 
-                                            id="name-colaborador" 
-                                        />
+                                    <div style={{display: 'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'center', marginLeft: -555}}>
+                                        <div style={{display: "flex",  flexDirection: "column",alignItems: "center", justifyContent: "center"}}>
+                                            <input
+                                                placeholder='exemplo@email.com'
+                                                style={{ width: 350, marginLeft: -50}}
+                                                name='email'
+                                                onChange={handleChange}
+                                                required
+                                                type="email" 
+                                                id="email-colaborador" 
+                                            />
+                                        </div>
+                                        <div style={{display: "flex",  flexDirection: "column",alignItems: "center", justifyContent: "center", marginLeft: 6}}>
+                                            <input 
+                                                placeholder='123'
+                                                style={{width: 115}}
+                                                name='numero'
+                                                onChange={handleChange}
+                                                required
+                                                className="num-type-numero" 
+                                                type="number" 
+                                                id="number-colaborador" 
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <label htmlFor="email-colaborador">Email:</label>
-                                        <input
-                                            name='email'
-                                            onChange={handleChange}
-                                            required
-                                            type="email" 
-                                            id="email-colaborador" 
-                                        />
+                                    {/* Campos Documents */}
+                                    <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", height: "10vh", marginLeft: -605, marginTop: -25, gap: 40}}>
+                                        <div>
+                                            <input 
+                                                onChange={handleChange}
+                                                required
+                                                type="text" 
+                                                placeholder='RG xx.xxx.xxx.xx' 
+                                                name='rg'
+                                            />
+                                        </div>
+                                        <div>
+                                            <input
+                                                onChange={handleChange}
+                                                required
+                                                name='cpf'
+                                                type="text" 
+                                                id="CPF-colaborador"
+                                                placeholder='CPF xxx.xxx.xxx-xx'     
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="numbers-type">
-                                        <label htmlFor="tel-colaborador">Tel:</label>
-                                        <input 
-                                            name='telefone'
-                                            onChange={handleChange}
-                                            required
-                                            className="num-type-tel" 
-                                            type="number" 
-                                            id="tel-colaborador" 
-                                        />
+                                             {/* Campos date and Role */}
+                                    <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", height: "10vh", marginLeft: -606, marginTop: -48, gap: 20}}>
+                                        <div>
+                                            <input 
+                                                onChange={handleChange}
+                                                required
+                                                title='Data de Nascimento'
+                                                type="date" 
+                                                name='dataNascimento'
+                                            />
+                                        </div>
+                                        <div>
+                                            <input 
+                                                onChange={handleChange}
+                                                required
+                                                style={{width: 300}}
+                                                type="text"
+                                                placeholder='Cargo'
+                                                name='cargo'
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                    <h3>Credenciais de Acesso</h3>
-                                    <div>
-                                        <label htmlFor="username-colaborador">Username Login:</label>
-                                        <input
-                                            name='username'
-                                            onChange={handleChange}
-                                            required
-                                            type="text" 
-                                            id="username-colaborador" 
-                                        />
+                                    {/* Credenciais de Acesso */}
+                                    <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "10vh", position: "absolute", top: -15, right: -400}}>
+                                        <h3>Credenciais de Acesso</h3>
+                                        <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10}}>
+                                        <div>
+                                            <input
+                                                style={{width: 220}}
+                                                onChange={handleChange}
+                                                placeholder='Usuário'
+                                                name='username'
+                                                type="text" 
+                                                id="username-colaborador" 
+                                            />
+                                        </div>
+                                        <div>
+                                            <input 
+                                                style={{width: 220}}
+                                                onChange={handleChange}
+                                                required
+                                                placeholder='Password'
+                                                name='password'
+                                                type="password" 
+                                                id="pass-colaborador" 
+                                            />
+                                        </div>
+                                        </div>
+                                        <button type="submit">Salvar</button>
                                     </div>
-                                    <div>
-                                        <label htmlFor="pass-colaborador">Senha:</label>
-                                        <input 
-                                            name='password'
-                                            onChange={handleChange}
-                                            required
-                                            type="password" 
-                                            id="pass-colaborador" 
-                                        />
-                                    </div>
-                                    </div>
-                                    <button type="submit">Salvar</button>
                                 </form>
-                                </FormDisplay>
+                            </FormDisplay>
                         </Colaboradores>
                 </ContainerForm>
             </ContainerGeral>
-        </Layout>       
+           
+        </>     
     )
 }
 

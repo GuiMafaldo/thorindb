@@ -38,7 +38,11 @@ export const resetPassword = async({nome, senha, newSenha, senhaConfirmacao}: {n
 
 // CADASTRO DE COLABORADORES ENDPOINTS
 export const cadastrarColaborador = async(colaborador: Colaborador) => {
-    return apiRequest("Colaborador/cadastrar", "POST", colaborador)
+    return apiRequest("Colaborador/colaborador", "POST", colaborador)
+}
+export const getAllColaborador = async(searchTerms: string): Promise<Colaborador[]> => {
+    const query = searchTerms ? ` ? nome=${encodeURIComponent(searchTerms)}` : ""
+    return apiRequest(`Colaborador/colaborador${query}`, "GET")
 }
 export const handleColaboradorWithId = async(id: string) => {
     return apiRequest("Colaborador/${id}", "GET", `name=${id}`)

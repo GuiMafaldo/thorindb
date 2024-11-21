@@ -18,8 +18,9 @@ const LoginPage: React.FC = () => {
         try {
             const response = await handleLogin({ nome: userData, senha: password });
             if (response && response.success) {
-                localStorage.setItem('userName', userData); // Use userData.nome
-                navigate('/dashBoard');
+                localStorage.setItem('userName', userData)
+                localStorage.setItem('userPass', password); // Use userData.nome
+                navigate('/dashboard');
             } else {
                 setError("Credenciais inválidas. Tente novamente.");
             }
