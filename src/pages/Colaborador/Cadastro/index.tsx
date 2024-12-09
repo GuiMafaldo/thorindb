@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Colaboradores, ContainerForm, ContainerGeral, FormDisplay } from "./styles"
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Colaborador } from '../../../utils/Interfaces/colaborador'
 import { cadastrarColaborador } from '../../../services/api/api'
 
@@ -46,6 +46,7 @@ const CadastroColaboradores = () => {
                 });
             } else {
                 alert("Erro ao cadastrar colaborador")
+                console.log(resultado)
             }
         }
     return(  

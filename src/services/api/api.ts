@@ -22,6 +22,7 @@ import { baseUrl } from "../db/conectiondb";
         if(!response.ok) {
             throw new Error(`Erro na requisiçao${endpoint}`)
         }
+        console.log(response)
         return await response.json()
     } catch(error) {
         console.error(`Erro na API (${endpoint}):`, error)
@@ -39,6 +40,10 @@ export const resetPassword = async({nome, senha, newSenha, senhaConfirmacao}: {n
 // CADASTRO DE COLABORADORES ENDPOINTS
 export const cadastrarColaborador = async(colaborador: Colaborador) => {
     return apiRequest("Colaborador/colaborador", "POST", colaborador)
+}
+
+export const getUserCredentials = async({username, password}: {username: string, password: string}) => {
+    return apiRequest("Colaborador/colaborador", "POST", {username, password})
 }
 export const getAllColaborador = async(searchTerms: string): Promise<Colaborador[]> => {
     const query = searchTerms ? ` ? nome=${encodeURIComponent(searchTerms)}` : ""

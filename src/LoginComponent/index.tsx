@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { handleLogin } from "../services/api/api";
+import { getUserCredentials, handleLogin } from "../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
 import globo from '../assets/image/iconeGlobo.png'
 
@@ -17,12 +17,13 @@ const LoginPage: React.FC = () => {
         setLoading(true);
         try {
             const response = await handleLogin({ nome: userData, senha: password });
-            if (response && response.success) {
+            const userResponse = await getUserCredentials({username: userData, password: password})
+            if (response && response.success || userResponse && userResponse.success) {
                 localStorage.setItem('userName', userData)
-                localStorage.setItem('userPass', password); // Use userData.nome
                 navigate('/dashboard');
             } else {
                 setError("Credenciais inválidas. Tente novamente.");
+                console.log(response)
             }
         } catch (error) {
             setError(`Erro ao autenticar. Tente novamente. ${error}`);

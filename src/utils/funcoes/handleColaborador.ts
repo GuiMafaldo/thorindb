@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllColaborador, handleColaboradorWithId } from "../../services/api/api";
+import { getAllColaborador, getUserCredentials, handleColaboradorWithId } from "../../services/api/api";
 import { Colaborador } from "../Interfaces/colaborador";
 
 export const useColaboradorArea = () => {
@@ -25,6 +25,18 @@ export const useColaboradorArea = () => {
       setIsLoading(false);
     }
   };
+
+  const userCredentials = async () => {
+    try {
+      const response = await getUserCredentials({username: searchTerm, password: searchTerm})
+      if (response && response.success) {
+        localStorage.setItem('userName', searchTerm)
+        console.log(response)
+      }
+    }catch(error) {
+      console.log(error)
+    }
+  }
 
   const filterColaborador = (term: string) => {
     if (term.trim() === "") {
