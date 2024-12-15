@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getColaboradores } from "../../services/api/api";
 import { Colaborador } from "../Interfaces/colaborador";
 
 export const useColaboradorArea = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showResults, setShowResults] = useState<boolean>(false);
-  const [colaborador, setColaborador] = useState<Colaborador[]>([]);
-  const [filteredColaborador, setFilteredColaborador] = useState<Colaborador[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string | any>(""); // Termo de busca
+  const [error, setError] = useState<string | null>(null); // Mensagem de erro
+  const [isLoading, setIsLoading] = useState<boolean>(false); // Indica carregamento
+  const [showResults, setShowResults] = useState<boolean>(false); // Exibição de resultados
+  const [colaboradores, setColaboradores] = useState<Colaborador[]>([]); // Lista original de colaboradores
+  const [filteredColaboradores, setFilteredColaboradores] = useState<Colaborador[]>([]); // Lista filtrada
 
   // Função para buscar colaboradores no banco de dados
   const searchColaborador = async () => {
     setIsLoading(true);
     setError(null);
+
     try {
       const res = await getColaboradores(searchTerm);
-      setColaborador(res);
-      setFilteredColaborador(res); // Inicialmente, a lista filtrada está vazia
-      setShowResults(true); // Não exibe resultados até que a busca seja realizada
+
+      // Verifica se o retorno é um array válido
+      setColaboradores(res);
+      setFilteredColaboradores(res); // Inicialmente, exibe todos os colaboradores
+      setShowResults(true);
+      console.log(res);
     } catch (err) {
       setError("Erro ao buscar colaboradores");
     } finally {
@@ -26,53 +30,49 @@ export const useColaboradorArea = () => {
     }
   };
 
-  // const userCredentials = async () => {
-  //   try {
-  //     const response = await getUserCredentials({username: searchTerm, password: searchTerm})
-  //     if (response && response.success) {
-  //       localStorage.setItem('userName', searchTerm)
-  //       console.log(response)
-  //     }
-  //   }catch(error) {
-  //     console.log(error)
-  //   }
-  // }
-
+  // Filtrar colaboradores com base no termo de busca
   const filterColaborador = (term: string) => {
-    if (term.trim() === "") {
-      setFilteredColaborador(colaborador); // Não mostra nenhum colaborador quando o termo está vazio
+    const normalizedTerm = term.trim().toLowerCase();
+
+    if (normalizedTerm === "") {
+      // Exibe todos os colaboradores se o termo estiver vazio
+      setFilteredColaboradores(colaboradores);
     } else {
-      const filtered = colaborador.filter((index) =>
-        index.nome.toLowerCase().includes(term.toLowerCase())
+      // Filtra colaboradores pelo nome
+      const filtered = colaboradores.filter((colaborador) =>
+        colaborador.nome.toLowerCase().includes(normalizedTerm)
       );
-      setFilteredColaborador(filtered);
+      setFilteredColaboradores(filtered);
     }
-    setShowResults(true); // Exibe os resultados após a busca
+
+    setShowResults(true); // Exibe os resultados após o filtro
   };
 
-  const handleSearchColaborador = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    filterColaborador(searchTerm);
+  // Lidando com envio do formulário de busca
+  const handleSearchColaborador = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    filterColaborador(searchTerm); // Aplica o filtro
   };
 
-  const handleChangeColaborador = (event: any) => {
-    const value = event.target.value;
+  // Atualiza o termo de busca e aplica o filtro em tempo real
+  const handleChangeColaborador = (e: any) => {
+    const value = e.target.value;
     setSearchTerm(value);
-    filterColaborador(value); // Aplica o filtro em tempo real
+    filterColaborador(value);
   };
 
+  // Busca colaboradores ao montar o componente
   useEffect(() => {
-    searchColaborador(); // Busca produtos quando o componente é montado
+    searchColaborador();
   }, []);
-
 
   return {
     searchTerm,
     error,
     isLoading,
     showResults,
-    filteredColaborador, 
-    getColaboradores,
-    handleChangeColaborador
+    filteredColaboradores,
+    handleChangeColaborador,
+    handleSearchColaborador,
   };
 };

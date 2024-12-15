@@ -1,32 +1,31 @@
-import { link } from "fs"
 
 const menuData = [
   {
-    title: "DashBoard",
-    actions: ["Novidades", "Estoque", "Vendas", "Compras"],
+    title: "Dashboard",
+    actions: ["Atualizações", "Estoque", "Vendas", "Compras"],
     links: ["/dashboard", "/estoque", "/vendas", "/compras"]
   },  
   {
       title: "Colaboradores",
-      actions: ["Gerenciar Info"],
+      actions: ["Área de Colaboradores"],
       links: ["/colaborador"],
       
     },
     {
       title: "Clientes",
-      actions: ["Consultar clientes"],
+      actions: ["Área de Clientes"],
       links: ["/cliente"],
       
     },
     {
       title: "Fornecedores",
-      actions: ["Geenciar Info"],
+      actions: ["Área de Fornecedores"],
       links: ["/fornecedor"]
       
     },
     {
       title: "Produtos",
-      actions: ["Gerenciar Info"],
+      actions: ["Área de Produtos"],
       links: ["/produtos"]
     },
     {

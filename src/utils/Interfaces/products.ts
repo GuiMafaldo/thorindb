@@ -1,8 +1,7 @@
 export interface Produto {
     id?: number | any;
-    nome: string;
-    descricao: string;
-    preco: number;
-    quantidade: number;
-    categoria: string
+    name: string;
+    description: string;
+    price: number | any;
+    quantity: number;
 }

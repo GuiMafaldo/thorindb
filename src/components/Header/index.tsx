@@ -10,7 +10,7 @@ const InitialPage: React.FC = () => {
     const [menuSettings, setMenuSettings] = useState<Boolean>(false);
     const [contact, setContact] = useState<Boolean>(false)
     const [configuration, setConfiguration] = useState<Boolean>(false)
-    const [rotateConfig, setRotateConfig] = useState<Boolean>(false)
+    const [rotateConfig, setRotateConfig] = useState<Boolean>(true)
     const [rotateSup, setRotateSup] = useState<Boolean>(false)
 
     const hanldeOpenSettings = (e: React.MouseEvent) => {
@@ -21,6 +21,7 @@ const InitialPage: React.FC = () => {
         e.preventDefault()
         setContact(!contact)
         setRotateSup(!rotateSup)
+        console.log(rotateSup)
     }
     
     const handleOpenConfiguration = (e: React.MouseEvent) => {
@@ -35,7 +36,7 @@ const InitialPage: React.FC = () => {
     return (
         <HeaderPage>
             <DivHeader>
-                <img style={{position: 'relative'}} onClick={hanldeOpenSettings} src={config} alt="Logo engrenagem" />
+                <img style={{position: 'relative', cursor: 'pointer'}} onClick={hanldeOpenSettings} src={config} alt="Logo engrenagem" />
                 {menuSettings ? (
                     <div 
                         className='menuOpen' 
@@ -48,8 +49,9 @@ const InitialPage: React.FC = () => {
                             height: '200px', 
                             gap:'10px',
                             position: 'absolute',
-                            top: '30px',
-                            left: '50px'
+                            top: '10px',
+                            left: '50px',
+                            zIndex: '1000'
                     }}>
                         <div style={{display: 'flex', gap: '10px', justifyContent: 'space-between', cursor: 'pointer'}}>
                             <a  style={{color: "#000", textDecoration:"none"}}>Minimizar</a>
@@ -58,7 +60,7 @@ const InitialPage: React.FC = () => {
 
                         <hr  style={{height : '1px', width: '100%', backgroundColor: '#c9c9c9', border: 'none'}}/>
                         <div onClick={handleOpenConfiguration} style={{display: 'flex', gap: '10px', justifyContent: 'space-between', cursor: 'pointer'}}>
-                            <a style={{color: "#000", textDecoration:"none"}} >Configurações</a>
+                            <a style={{color: "#000", textDecoration:"none", cursor: 'pointer'}} >Configurações</a>
                             <img onClick={handleOpenConfiguration} className={`image-rotacao-config ${rotateConfig ? 'rotate-config' : ''}`} style={{marginTop: "3px", height:"14px", width: '14px'}} src={right} alt="icone seta direita" />
                         </div>
 
@@ -114,7 +116,7 @@ const InitialPage: React.FC = () => {
                         <hr  style={{height : '1px', width: '100%', backgroundColor: '#c9c9c9', border: 'none'}}/>
                         <a style={{color: "#000", textDecoration:"none"}} href="">Exibir infomações</a>
                         <hr  style={{height : '1px', width: '100%', backgroundColor: '#c9c9c9', border: 'none'}}/>
-                        <a style={{color: "#000", textDecoration:"none"}} href="">Sair</a>
+                        <a onClick={hanldeOpenSettings} style={{color: "#000", textDecoration:"none"}} href="">Sair</a>
                     </div>
                 ) : (
                 

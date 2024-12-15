@@ -61,7 +61,7 @@ export const Container = styled.div`
 export const Header = styled.div`
   display: flex;
   width: 1540px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
   padding: 10px 20px;

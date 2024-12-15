@@ -95,7 +95,6 @@ const CadastroColaboradores = () => {
                                                 style={{width: 115}}
                                                 name='numero'
                                                 onChange={handleChange}
-                                                required
                                                 className="num-type-numero" 
                                                 type="number" 
                                                 id="number-colaborador" 
@@ -107,7 +106,6 @@ const CadastroColaboradores = () => {
                                         <div>
                                             <input 
                                                 onChange={handleChange}
-                                                required
                                                 type="text" 
                                                 placeholder='RG xx.xxx.xxx.xx' 
                                                 name='rg'
@@ -116,7 +114,6 @@ const CadastroColaboradores = () => {
                                         <div>
                                             <input
                                                 onChange={handleChange}
-                                                required
                                                 name='cpf'
                                                 type="text" 
                                                 id="CPF-colaborador"
@@ -129,7 +126,6 @@ const CadastroColaboradores = () => {
                                         <div>
                                             <input 
                                                 onChange={handleChange}
-                                                required
                                                 title='Data de Nascimento'
                                                 type="date" 
                                                 name='dataNascimento'
@@ -138,7 +134,6 @@ const CadastroColaboradores = () => {
                                         <div>
                                             <input 
                                                 onChange={handleChange}
-                                                required
                                                 style={{width: 300}}
                                                 type="text"
                                                 placeholder='Cargo'

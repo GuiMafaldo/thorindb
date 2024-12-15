@@ -12,6 +12,4 @@ export const ContainerPageCentral = styled.div`
         justify-content: space-between;
         gap: 10px;
     }
-
-
 `

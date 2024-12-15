@@ -51,11 +51,11 @@ const {
                       filteredProducts.map((produto) => (
                           <TableRow key={produto.id}>
                             <TableData>{produto.id}</TableData>
-                            <TableData>{produto.nome}</TableData>
-                            <TableData>R$: {produto.preco.toFixed(4)}</TableData>
-                            <TableData>{produto.quantidade}</TableData>
-                            <TableData>{produto.descricao}</TableData>
-                            <TableData>{produto.categoria}</TableData>
+                            <TableData>{produto.name}</TableData>
+                            <TableData>R$: {produto.price.toFixed(2)}</TableData>
+                            <TableData>{produto.quantity}</TableData>
+                            <TableData>{produto.description}</TableData>
+                            <TableData>Em breve</TableData>
                           </TableRow>
                       ))
                       ) : (

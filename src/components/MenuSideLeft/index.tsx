@@ -11,7 +11,6 @@ function SideBarItens() {
     <DivGeral id="Aside">
       <img src={logo} alt="My photo" />
       <nav>
-        <h3>Central KepB</h3>
         <ul>
           <li
             style={{

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { handleLogin } from "../services/api/api";
+import { handleLogin } from "../../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
-import globo from '../assets/image/iconeGlobo.png'
-import { couldStartTrivia } from "typescript";
+import globo from '../../assets/image/iconeGlobo.png'
 
 const LoginPage: React.FC = () => {
     const [userData, setUserData] = useState<string | any>("");

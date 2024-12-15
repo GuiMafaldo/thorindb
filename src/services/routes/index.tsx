@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import  Layout  from '../../Layout';
-import RenderPagesWithDinamicRoutes from '../../components/RenderProducts';
-import LoginPage from '../../LoginComponent';
+import RenderPagesWithDinamicRoutes from '../../components/DinamicPageProduct';
+import LoginPage from '../../components/LoginComponent';
 import CadastroClientes from '../../pages/Clientes/Cadastro';
 import SearchClientes from '../../pages/Clientes/Consulta';
 import CadastroFornecedores from '../../pages/Fornecedor/Cadastro';
 import SearchFornecedores from '../../pages/Fornecedor/Consulta';
 import GeraNotaFiscal from '../../pages/NotaFiscal/GeraNotaFiscal';
-import RenderColaboradoresPage from "../../components/RenderColaboradorPages";
+import RenderColaboradoresPage from "../../components/DinamicPageColaborador";
 
 const RenderRoutes =  () => {
     return(

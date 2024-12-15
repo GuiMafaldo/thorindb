@@ -31,7 +31,7 @@ export const useProductsArea = () => {
       setFilteredProducts(products); // Não mostra nenhum produto quando o termo está vazio
     } else {
       const filtered = products.filter((produto) =>
-        produto.nome.toLowerCase().includes(term.toLowerCase())
+        produto.name.toLowerCase().includes(term.toLowerCase())
       );
       setFilteredProducts(filtered);
     }

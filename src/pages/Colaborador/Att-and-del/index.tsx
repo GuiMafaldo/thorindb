@@ -21,7 +21,7 @@ const DeleteOrRedenColaborador = () => {
         searchTerm,
         error,
         isLoading,
-        filteredColaborador,
+        filteredColaboradores,
         handleChangeColaborador
     } = useColaboradorArea()
 
@@ -60,8 +60,8 @@ const DeleteOrRedenColaborador = () => {
                           ): (
                             <p>{error}</p>
                           )}
-                            {filteredColaborador.length > 0 ? (
-                              filteredColaborador.map((index) => ( 
+                            {filteredColaboradores.length > 0 ? (
+                              filteredColaboradores.map((index) => ( 
                                 <TableRow key={index.id}>
                                   <TableData>{index.id}</TableData>
                                   <TableData>{index.nome}</TableData>
@@ -116,7 +116,7 @@ const DeleteOrRedenColaborador = () => {
                                     }}>
                                       <img style={{width: "22px", height: "22px"}} src={Save} alt="logo save" />
                                     </button>
-                                    <button onClick={deleteUser}
+                                  <button onClick={deleteUser}
                                       style={{
                                         width: "25px", 
                                         height:"25px", 
@@ -133,8 +133,7 @@ const DeleteOrRedenColaborador = () => {
                                         cursor: "pointer"
                                     }}>
                                       <img style={{width: "22px", height: "22px", marginLeft: "-2px"}} src={Delete} alt="logo delete" />
-                                    </button>
-                      
+                                  </button>                     
                   </TableWrapper>
             </ContainerContent>
         );

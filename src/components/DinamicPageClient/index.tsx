@@ -2,13 +2,13 @@ import Layout from "../../Layout"
 
 import { useState } from "react"
 
-import CadastroColaboradores from "../../pages/Colaborador/Cadastro"
-import DeleteOrRedenColaborador from "../../pages/Colaborador/Att-and-del"
+import CadastroClientes from "../../pages/Clientes/Cadastro"
+import DeleteOrRedenClientes from "../../pages/Clientes/Att-and-del"
 
-const CadastrarColaborador = () => <CadastroColaboradores />
-const AtualizaColaborador = () => <DeleteOrRedenColaborador/>
+const CadastrarCliente = () => <CadastroClientes />
+const AtualizaCliente = () => <DeleteOrRedenClientes/>
 
-const RenderColaboradoresPage = () => {
+const RenderClientesPage = () => {
     const [currentPages, setCurrentPages] = useState<string>("colaborador")
 
     const handlePageVisible = (page: string) => {
@@ -18,9 +18,9 @@ const RenderColaboradoresPage = () => {
     const renderPage = () => {
         switch (currentPages) {
             case "colaborador":
-                return <CadastrarColaborador />  
+                return <CadastrarCliente/>  
             case "redefinir":
-                return <AtualizaColaborador />
+                return <AtualizaCliente />
             default:
                 return <p>Nenhuma página encontrada</p>
         }
@@ -58,8 +58,7 @@ const RenderColaboradoresPage = () => {
                 {renderPage()}          
             </section>
         </Layout>
-
     )
 }
 
-export default RenderColaboradoresPage
+export default RenderClientesPage

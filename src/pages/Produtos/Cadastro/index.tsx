@@ -10,11 +10,10 @@ import { Produto } from '../../../utils/Interfaces/products';
 
 const CadastrarProduto = () => {
       const [produto, setProduto] = useState<Produto>({
-        nome: '',
-        preco: 0,
-        descricao: '',
-        quantidade: 0,
-        categoria: ''
+        name: '',
+        price: 0,
+        description: '',
+        quantity: 0,
       });
     
       const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +43,7 @@ const CadastrarProduto = () => {
                   Nome do Produto:
                   <Input
                     type="text"
-                    name='nome'
+                    name='name'
                     onChange={handleChange}
                     required
                     style={{ width: '120%', padding: '8px', marginBottom: '10px' }}
@@ -67,7 +66,7 @@ const CadastrarProduto = () => {
                 </Label>
                   <Input
                     type="number"
-                    name='preco'
+                    name='price'
                     onChange={handleChange}
                     style={{ width: '80%', padding: '8px', marginBottom: '10px', marginLeft: '20px' }}
                     required
@@ -80,7 +79,7 @@ const CadastrarProduto = () => {
                   </Label>
                       <Input
                       type="text"
-                      name='quantidade'
+                      name='quantity'
                       onChange={handleChange}
                       style={{ width: '100%', padding: '8px', marginBottom: '10px' }}
                       required
@@ -121,8 +120,8 @@ const CadastrarProduto = () => {
                   Descrição do Produto:
                   <input 
                     type='text' 
-                    defaultValue={produto.descricao}
-                    name='descricao' 
+                    defaultValue={produto.description}
+                    name='description' 
                     onChange={handleChange}
                     style={{ width: '100%', padding: '8px', marginBottom: '10px', height: '100px' }}
                     required
@@ -135,8 +134,7 @@ const CadastrarProduto = () => {
                   <input 
                     style={{padding: "8px", marginTop:"16px"}} 
                     type="text" 
-                    name='categoria' 
-                    required
+                    name='categoria'
                   />           
                 </Label>
               </FormGroup>
