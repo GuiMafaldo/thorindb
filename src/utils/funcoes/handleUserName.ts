@@ -8,19 +8,18 @@ export const useGetNameUser = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
     // Função para autenticar e obter o nome do usuário
-    const authenticateUser = useCallback(async (userData: string, password: string) => {
+    const authenticateUser = useCallback(async (userData: string, pass: string) => {
         setLoading(true);
         setError(null);
 
         try {
             // Chama a função de login passando userData e password
-            const response = await handleLogin({ nome: userData, senha: password });
-            
-            if (response && response.userName) {
+            const response = await handleLogin({ username: userData, password: pass });       
+            if (response.userName && response.pass) {
+                console.log(response);
                 setUserName(response.userName);
             } else {
                 setError("Usuário ou senha inválidos");
-                console.log(response);
             }
         } catch (error) {
             setError("Erro ao autenticar. Tente novamente.");

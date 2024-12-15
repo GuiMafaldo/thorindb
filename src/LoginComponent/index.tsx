@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { getUserCredentials, handleLogin } from "../services/api/api";
+import { handleLogin } from "../services/api/api";
 import { HeaderLogin, DivContainer, DivForm, FormLogin, SelectIdioma } from "./styles";
 import globo from '../assets/image/iconeGlobo.png'
+import { couldStartTrivia } from "typescript";
 
 const LoginPage: React.FC = () => {
     const [userData, setUserData] = useState<string | any>("");
-    const [password, setPassword] = useState<string | any>("");
-    const [error, setError] = useState<string | null>(null);
+    const [pass, setPassword] = useState<string | any>("");
+    const [error, setError] = useState<string | any>();
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -15,18 +16,22 @@ const LoginPage: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
+        setError(""); 
+       
+    
         try {
-            const response = await handleLogin({ nome: userData, senha: password });
-            const userResponse = await getUserCredentials({username: userData, password: password})
-            if (response && response.success || userResponse && userResponse.success) {
-                localStorage.setItem('userName', userData)
-                navigate('/dashboard');
-            } else {
-                setError("Credenciais inválidas. Tente novamente.");
-                console.log(response)
-            }
-        } catch (error) {
-            setError(`Erro ao autenticar. Tente novamente. ${error}`);
+            // Fazer a requisição de login
+            const response = await handleLogin({ username: userData, password: pass });
+    
+            if (response && response.success) {
+                    localStorage.setItem('userName', response.user.username);
+                    navigate('/dashboard');
+                } else {
+                    setError("Credenciais inválidas. Tente novamente.");
+                    console.log(response.username, response.password);
+                }
+        } catch (error: any) {
+            setError(`Erro ao autenticar. Tente novamente. ${error.message || error}`);
         } finally {
             setLoading(false);
         }
@@ -51,7 +56,7 @@ const LoginPage: React.FC = () => {
                         <input 
                             type="password" 
                             placeholder="Senha" 
-                            value={password}
+                            value={pass}
                             onChange={(e) =>  setPassword(e.target.value)}
                             required 
                         />

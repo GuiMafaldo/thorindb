@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Colaboradores, ContainerForm, ContainerGeral, FormDisplay } from "./styles"
 import React, { useState } from 'react'
 import { Colaborador } from '../../../utils/Interfaces/colaborador'
-import { cadastrarColaborador } from '../../../services/api/api'
+import { postColaborador } from '../../../services/api/api'
 
 
 const CadastroColaboradores = () => {
@@ -10,13 +10,10 @@ const CadastroColaboradores = () => {
         nome: '',
         telefone: '',
         email: '',
-        numero: 0,
+        numero: '',
         username: '',
         password: '',
-        rg: '',
-        cpf: '',
-        cargo: '',
-        dataNascimento: new Date()
+       
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,20 +26,16 @@ const CadastroColaboradores = () => {
 
         const clickSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault()
-            const resultado = await cadastrarColaborador(colaborador);
+            const resultado = await postColaborador(colaborador);
             if (resultado) {
                 alert("Colaborador cadastrado com sucesso!");
                 setColaborador({
                     nome: '',
                     telefone: '',
                     email: '',
-                    numero: 0,
+                    numero: '',
                     username: '',
-                    password: '',
-                    rg: '',
-                    cpf: '',
-                    cargo: '',
-                    dataNascimento: new Date()
+                    password: ''
                 });
             } else {
                 alert("Erro ao cadastrar colaborador")

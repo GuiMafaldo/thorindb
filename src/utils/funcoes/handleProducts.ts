@@ -39,11 +39,11 @@ export const useProductsArea = () => {
   };
 
   // ATUALIZAR PRODUTO 
-  const updateProductDetails = async (id: string, updatedData: Partial<Produto>) => {
+  const updateProductDetails = async (id: string, putProduct: Partial<Produto>) => {
     setIsLoading(true);
     setError(null);
     try {
-      const updatedProduct = await updateProductWhitId(id, updatedData); 
+      const updatedProduct = await updateProductWhitId(id, putProduct); 
       setProducts((prevProducts) =>
         prevProducts.map((product) =>
           product.id === id ? { ...product, ...updatedProduct } : product
